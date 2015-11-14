@@ -14,4 +14,6 @@
     <string name="title_activity_login">LoginActivity</string>
 
     <string name="insert_login">Insert name</string>
+    <string name="insert_password">Password</string>
+    <string name="login">Login</string>
 </resources>
