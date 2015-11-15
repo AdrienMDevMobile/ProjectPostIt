@@ -1,9 +1,11 @@
 package com.michel.adrien.projectpostit;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import org.json.JSONObject;
 
@@ -12,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import complementaryClass.InputStreamOperations;
+import complementaryClass.apiUrl;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -24,6 +27,16 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //Creation of the actions of the buttons
+        //Button Sign up that starts the Sign up activity
+        Button signUp = (Button)findViewById(R.id.buttonSignUp);
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intentSignUp);
+            }
+        });
 
         new CallAPI().execute("");
 
@@ -35,14 +48,12 @@ public class LoginActivity extends ActionBarActivity {
         protected String doInBackground(String... params) {
 
             try {
-                Log.i("Test", "0");
-                String myurl= "http://10.0.2.2:3000/user";
+                String myUrl= apiUrl.getUserRoute();
 
-                URL url = new URL(myurl);
+                URL url = new URL(myUrl);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 InputStream inputStream = connection.getInputStream();
-                Log.i("Test", "1");
 
                 /*
                  * InputStreamOperations est une classe complémentaire:
@@ -54,9 +65,7 @@ public class LoginActivity extends ActionBarActivity {
                 JSONObject jsonObject = new JSONObject(result);
 
                 String s = jsonObject.getString("res");
-                Log.i("Test", s);
 
-                Log.i("Test", "3");
 
             } catch (Exception e) {
                 e.printStackTrace();
