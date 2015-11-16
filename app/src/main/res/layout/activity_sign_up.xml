@@ -16,8 +16,10 @@
 
             <ImageView android:src="@drawable/logo"
                 android:layout_width="fill_parent"
-                android:layout_height="300px"
-                android:layout_marginLeft="10dip"/>
+                android:layout_height="150dp"
+                android:layout_marginStart="10dip"
+                android:layout_marginLeft="10dip"
+                android:contentDescription="@string/contentDescription_logo"/>
             <!-- Logo Ends -->
         </LinearLayout>
         <!--  Header Ends -->
@@ -27,7 +29,8 @@
         <LinearLayout android:id="@+id/footer"
             android:layout_width="fill_parent"
             android:layout_height="90dip"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
         </LinearLayout>
         <!-- Footer Ends -->
 
@@ -71,24 +74,25 @@
                 android:textColor="#372c24"
                 android:text="@string/insert_password"
                 android:id="@+id/textViewPassword" />
+
             <EditText android:id="@+id/editTextPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:password="true"
+                android:inputType="textPassword"
                 android:singleLine="true"
                 android:layout_marginTop="5dip"/>
             <!-- Register Button -->
-            <Button android:id="@+id/btnRegister"
+            <Button android:id="@+id/buttonSignUp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
-                android:text="Register New Account"/>
+                android:text="@string/Sign_up"/>
 
             <!-- Go to Login Button -->
-            <Button android:id="@+id/btnGoToLogin"
+            <Button android:id="@+id/buttonGoToLogin"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Already has account ?"
+                android:text="@string/go_to_login"
                 android:layout_marginTop="40dip"
                 android:layout_marginBottom="40dip"
                 />

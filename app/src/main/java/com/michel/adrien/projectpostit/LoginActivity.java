@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import org.json.JSONObject;
 
@@ -19,9 +20,6 @@ import complementaryClass.apiUrl;
 
 public class LoginActivity extends ActionBarActivity {
 
-    //API URL
-    public final static String apiURL = "http://10.0.2.2:3000/user";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +27,22 @@ public class LoginActivity extends ActionBarActivity {
 
         //Creation of the actions of the buttons
         //Button Sign up that starts the Sign up activity
-        Button signUp = (Button)findViewById(R.id.buttonSignUp);
-        signUp.setOnClickListener(new View.OnClickListener() {
+        Button goToSignUp = (Button)findViewById(R.id.buttonGoToSignUp);
+        goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intentSignUp);
+            }
+        });
+
+        Button logIn = (Button)findViewById(R.id.buttonLogin);
+        logIn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                String login = ((EditText)v.findViewById(R.id.editTextLogin)).getText().toString();
+                String password = ((EditText)v.findViewById(R.id.editTextPassword))
+                        .getText().toString();
             }
         });
 

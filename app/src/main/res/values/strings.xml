@@ -22,10 +22,10 @@
 
     <string name="login">Login</string>
     <string name="Sign_up">Sign up</string>
+    <string name="go_to_login">Already have an account ?</string>
 
-
+    <string name="contentDescription_logo">Logo post it</string>
 
     <string name="title_activity_sign_up">SignUpActivity</string>
 
-    <string name="hello_world">Hello world!</string>
 </resources>
