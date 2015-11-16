@@ -13,4 +13,6 @@ public abstract class apiUrl {
     public static String getUserRoute(){
         return getDatabaseUrl() + "user/";
     }
+
+    public static String getBoardRoute() { return getDatabaseUrl() + "board/";}
 }
