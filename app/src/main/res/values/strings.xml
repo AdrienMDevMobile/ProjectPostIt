@@ -18,7 +18,9 @@
     <string name="insert_firstName">First Name</string>
     <string name="insert_lastName">Last Name</string>
     <string name="insert_mail">Mail</string>
-    <string name="insert_password_again">Password again</string>
+    <string name="string_insert_password_again">Please insert password again</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 
     <string name="login">Login</string>
     <string name="Sign_up">Sign up</string>

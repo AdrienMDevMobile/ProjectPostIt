@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_too_short">Login too short. Min length : 3</string>
+    <string name="login_too_long">Login too long. Max length : 15</string>
+
+    <string name="password_too_short">Password too short. Min length : 5</string>
+    <string name="password_too_long">Password too long. Max length : 20</string>
+
+    <string name="mail_too_short">Mail too short. Min length : 3</string>
+    <string name="mail_too_long">Mail too long. Max length : 20</string>
+
+
+</resources>

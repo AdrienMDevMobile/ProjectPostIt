@@ -1,4 +1,4 @@
-package complementaryClass;
+package settings;
 
 /**
  * Created by Adrien on 15/11/2015.

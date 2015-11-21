@@ -15,7 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import complementaryClass.InputStreamOperations;
-import complementaryClass.apiUrl;
+import settings.apiUrl;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -46,7 +46,7 @@ public class LoginActivity extends ActionBarActivity {
             }
         });
 
-        new CallAPI().execute("");
+        //new CallAPI().execute("");
 
     }
 
