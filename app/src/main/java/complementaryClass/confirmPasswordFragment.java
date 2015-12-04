@@ -5,7 +5,10 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.michel.adrien.projectpostit.R;
 
@@ -13,6 +16,18 @@ import com.michel.adrien.projectpostit.R;
  * Created by Adrien on 15/11/2015.
  */
 public class confirmPasswordFragment extends DialogFragment {
+
+    public static String argumentPassword = "passwordToCheck";
+
+    public static confirmPasswordFragment newInstance(String passwordToCheck) {
+        confirmPasswordFragment confirmPasswordFragment = new confirmPasswordFragment();
+
+        Bundle args = new Bundle();
+        args.putString(argumentPassword, passwordToCheck);
+        confirmPasswordFragment.setArguments(args);
+
+        return confirmPasswordFragment;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -27,7 +42,22 @@ public class confirmPasswordFragment extends DialogFragment {
                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        // sign in the user ...
+                        Dialog dialog2 =Dialog.class.cast(dialog);
+                        String confirmedPassword = ((EditText)dialog2.
+                                findViewById(R.id.confirm_password_layout_etPassword))
+                                .getText().toString();
+                        Log.i("c", confirmedPassword);
+                        Log.i("t", getArguments().getString(argumentPassword));
+                        if(confirmedPassword.equals(getArguments().getString(argumentPassword))){
+                            Toast toast = Toast.makeText(getActivity().getBaseContext(),
+                                    "C'est bon", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                        else {
+                            Toast toast = Toast.makeText(getActivity().getBaseContext(),
+                                    R.string.password_confirm_wrong, Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

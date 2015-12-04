@@ -35,15 +35,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/header"
-            android:id="@+id/linerLayoutEditTextSignUp">
+            android:id="@+id/sign_up_activity_llEditTextSignUp">
 
             <!-- Full Name Label -->
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
                 android:text="@string/insert_login"
-                android:id="@+id/textViewLogin" />
-            <EditText android:id="@+id/editTextLogin"
+                android:id="@+id/sign_up_activity_tvLogin" />
+            <EditText android:id="@+id/sign_up_activity_etLogin"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dip"
@@ -54,8 +54,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
                 android:text="@string/insert_mail"
-                android:id="@+id/textViewMail" />
-            <EditText android:id="@+id/editTextMail"
+                android:id="@+id/sign_up_activity_twMail" />
+            <EditText android:id="@+id/sign_up_activity_etMail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dip"
@@ -66,23 +66,23 @@
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
                 android:text="@string/insert_password"
-                android:id="@+id/textViewPassword" />
+                android:id="@+id/sign_up_activity_tvPassword" />
 
-            <EditText android:id="@+id/editTextPassword"
+            <EditText android:id="@+id/sign_up_activity_etPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:singleLine="true"
                 android:layout_marginTop="5dip"/>
             <!-- Register Button -->
-            <Button android:id="@+id/buttonSignUp"
+            <Button android:id="@+id/sign_up_activity_btnSignUp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:text="@string/Sign_up"/>
 
             <!-- Go to Login Button -->
-            <Button android:id="@+id/buttonGoToLogin"
+            <Button android:id="@+id/sign_up_activity_btnGoToLogin"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/go_to_login"

@@ -9,5 +9,5 @@
     <string name="mail_too_short">Mail too short. Min length : 3</string>
     <string name="mail_too_long">Mail too long. Max length : 20</string>
 
-
+    <string name="password_confirm_wrong">The passwords don\'t match</string>
 </resources>

@@ -16,6 +16,7 @@ import java.net.URL;
 
 import complementaryClass.InputStreamOperations;
 import settings.apiUrl;
+import settings.stringLengthControl;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -25,24 +26,34 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        String login = ((EditText) findViewById(R.id.login_activity_etLogin)).getText().toString();
+
+        //Button that sends a request to connect the user
+        Button logIn = (Button)findViewById(R.id.login_activity_btnLogin);
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String login = ((EditText)findViewById(R.id.login_activity_etLogin)).getText().toString();
+                String password = ((EditText)findViewById(R.id.login_activity_etPassword)).getText().toString();
+
+                /* After getting all the informations from the user we check their length.
+                If they are good, we show the confirm password fragment */
+                if (stringLengthControl.checkLoginLength(getBaseContext(), login) &&
+                        stringLengthControl.checkPasswordLength(getBaseContext(), password)) {
+                    //LAncer la requete API
+                }
+
+            }
+        });
+
         //Creation of the actions of the buttons
         //Button Sign up that starts the Sign up activity
-        Button goToSignUp = (Button)findViewById(R.id.buttonGoToSignUp);
+        Button goToSignUp = (Button)findViewById(R.id.login_activity_btnGoToSignUp);
         goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intentSignUp);
-            }
-        });
-
-        Button logIn = (Button)findViewById(R.id.buttonLogin);
-        logIn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                String login = ((EditText)v.findViewById(R.id.editTextLogin)).getText().toString();
-                String password = ((EditText)v.findViewById(R.id.editTextPassword))
-                        .getText().toString();
             }
         });
 
