@@ -1,20 +1,19 @@
 package com.michel.adrien.projectpostit;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import org.json.JSONObject;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-import complementaryClass.InputStreamOperations;
+import complementaryClass.serviceHandler;
 import settings.apiUrl;
 import settings.stringLengthControl;
 
@@ -40,9 +39,15 @@ public class LoginActivity extends ActionBarActivity {
                 If they are good, we show the confirm password fragment */
                 if (stringLengthControl.checkLoginLength(getBaseContext(), login) &&
                         stringLengthControl.checkPasswordLength(getBaseContext(), password)) {
-                    //LAncer la requete API
-                }
 
+                    //Call of the API
+
+                    List<NameValuePair> params = new ArrayList<NameValuePair>();
+                    params.add(new BasicNameValuePair("login", login));
+                    params.add(new BasicNameValuePair("password", password));
+
+                    serviceHandler.makeServiceCall(apiUrl.getUserRegisterRoute(), 1, params);
+                }
             }
         });
 
@@ -61,41 +66,5 @@ public class LoginActivity extends ActionBarActivity {
 
     }
 
-    private class CallAPI extends AsyncTask<String, String, String> {
 
-        @Override
-        protected String doInBackground(String... params) {
-
-            try {
-                String myUrl= apiUrl.getUserRoute();
-
-                URL url = new URL(myUrl);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-                InputStream inputStream = connection.getInputStream();
-
-                /*
-                 * InputStreamOperations est une classe complémentaire:
-                 * Elle contient une méthode InputStreamToString.
-                 */
-                String result = InputStreamOperations.InputStreamToString(inputStream);
-
-                // On récupère le JSON complet
-                JSONObject jsonObject = new JSONObject(result);
-
-                String s = jsonObject.getString("res");
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return "";
-
-        }
-
-        protected void onPostExecute(String result) {
-
-        }
-
-    } // end CallAPI
 }

@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -46,12 +45,19 @@ public class confirmPasswordFragment extends DialogFragment {
                         String confirmedPassword = ((EditText)dialog2.
                                 findViewById(R.id.confirm_password_layout_etPassword))
                                 .getText().toString();
-                        Log.i("c", confirmedPassword);
-                        Log.i("t", getArguments().getString(argumentPassword));
+                        //C'est bon
                         if(confirmedPassword.equals(getArguments().getString(argumentPassword))){
                             Toast toast = Toast.makeText(getActivity().getBaseContext(),
                                     "C'est bon", Toast.LENGTH_SHORT);
                             toast.show();
+
+                            /*Call of the API
+
+                            List<NameValuePair> params = new ArrayList<NameValuePair>();
+                            params.add(new BasicNameValuePair("login", login));
+                            params.add(new BasicNameValuePair("password", password));
+
+                            serviceHandler.makeServiceCall(apiUrl.getUserRegisterRoute(), 1, params); */
                         }
                         else {
                             Toast toast = Toast.makeText(getActivity().getBaseContext(),

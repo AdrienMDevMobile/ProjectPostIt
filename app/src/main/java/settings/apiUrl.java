@@ -10,9 +10,11 @@ public abstract class apiUrl {
 
     private static String databaseUrl = "http://10.0.2.2:3000/";
 
+
     public static String getUserRoute(){
         return getDatabaseUrl() + "user/";
     }
+    public static String getUserRegisterRoute(){ return getUserRoute() + "signup"; }
 
     public static String getBoardRoute() { return getDatabaseUrl() + "board/";}
 }
