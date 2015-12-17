@@ -39,7 +39,7 @@ public class SignUpActivity extends ActionBarActivity{
                         stringLengthControl.checkMailLength(getBaseContext(), mail) &&
                         stringLengthControl.checkPasswordLength(getBaseContext(), password)) {
 
-                    DialogFragment confirmPasswordDialog = confirmPasswordFragment.newInstance(password);
+                    DialogFragment confirmPasswordDialog = confirmPasswordFragment.newInstance(login, mail, password);
                     confirmPasswordDialog.show(getSupportFragmentManager(), "");
                 }
             }

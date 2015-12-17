@@ -11,18 +11,31 @@ import android.widget.Toast;
 
 import com.michel.adrien.projectpostit.R;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import settings.apiUrl;
+
 /**
  * Created by Adrien on 15/11/2015.
  */
 public class confirmPasswordFragment extends DialogFragment {
 
-    public static String argumentPassword = "passwordToCheck";
+    public static String argumentPassword = "password";
+    public static String argumentLogin = "login";
+    public static String argumentMail = "mail";
 
-    public static confirmPasswordFragment newInstance(String passwordToCheck) {
+    public static confirmPasswordFragment newInstance(String login, String mail, String password) {
         confirmPasswordFragment confirmPasswordFragment = new confirmPasswordFragment();
 
         Bundle args = new Bundle();
-        args.putString(argumentPassword, passwordToCheck);
+        args.putString(argumentPassword, password);
+        args.putString(argumentLogin, login);
+        args.putString(argumentMail, mail);
+
         confirmPasswordFragment.setArguments(args);
 
         return confirmPasswordFragment;
@@ -51,13 +64,14 @@ public class confirmPasswordFragment extends DialogFragment {
                                     "C'est bon", Toast.LENGTH_SHORT);
                             toast.show();
 
-                            /*Call of the API
+                            //Call of the API
 
                             List<NameValuePair> params = new ArrayList<NameValuePair>();
-                            params.add(new BasicNameValuePair("login", login));
-                            params.add(new BasicNameValuePair("password", password));
+                            params.add(new BasicNameValuePair("login", getArguments().getString(argumentLogin)));
+                            params.add(new BasicNameValuePair("mail", getArguments().getString(argumentMail)));
+                            params.add(new BasicNameValuePair("password", getArguments().getString(argumentPassword)));
 
-                            serviceHandler.makeServiceCall(apiUrl.getUserRegisterRoute(), 1, params); */
+                            serviceHandler.makeServiceCall(apiUrl.getUserRegisterRoute(), 1, params);
                         }
                         else {
                             Toast toast = Toast.makeText(getActivity().getBaseContext(),
