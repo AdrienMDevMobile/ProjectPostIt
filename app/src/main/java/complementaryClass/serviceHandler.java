@@ -3,7 +3,6 @@ package complementaryClass;
 import android.util.Log;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
 
 import java.util.List;
 
@@ -34,13 +33,15 @@ public class serviceHandler {
 
         // appending params to url
         Log.e("in GET", "in GET");
+        /*
         if (params != null) {
             Log.e("in GET params", "in GET params");
-            String paramString = URLEncodedUtils
+
+           String paramString = URLEncodedUtils
                     .format(params, "utf-8");
             url += "?" + paramString;
             Log.e("URL", url);
-        }
+        } */
 
         new callAPI().execute(url);
     }

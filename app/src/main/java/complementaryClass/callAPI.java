@@ -3,11 +3,18 @@ package complementaryClass;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONObject;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Adrien on 04/12/2015.
@@ -22,31 +29,61 @@ public class callAPI extends AsyncTask<String, String, String> {
      */
     protected String doInBackground(String... params) {
 
+        HttpClient httpclient;
+        HttpPost request;
+        HttpResponse response = null;
+        String result = " ";
+
+        List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+        //On crée la liste qui contiendra tous nos paramètres
+        //Et on y rajoute nos paramétres
+        postParameters.add(new BasicNameValuePair("email", "jean@jean.com"));
+        postParameters.add(new BasicNameValuePair("password", "jean"));
+
+        Log.i("try", "nous y sommes");
+
         try {
+            httpclient = new DefaultHttpClient();
             Log.i("URL2", params[0]);
-            URL url = new URL(params[0]);
-
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.connect();
-            InputStream inputStream = connection.getInputStream();
-
-            /*
-             * InputStreamOperations est une classe complémentaire:
-             * Elle contient une méthode InputStreamToString.
-             */
-            String result = InputStreamOperations.InputStreamToString(inputStream);
-
-            // On récupère le JSON complet
-            JSONObject jsonObject = new JSONObject(result);
-
-            String resultString = jsonObject.getString("res");
-
-            Log.i("api", resultString);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            request = new HttpPost(params[0]);
+            Log.i("a", "1");
+            request.setEntity(
+                    new
+                            UrlEncodedFormEntity(
+                            postParameters
+                    ));
+            response = httpclient.execute(request);
+            Log.i("a", "2");
         }
-        return "";
+        catch (Exception e) {
+            result = "error";
+        }
+
+        try {
+            Log.i("a", "3");
+            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+            String line = "";
+            Log.i("a", "4");
+            while ((line = rd.readLine()) != null)
+            {
+                result = result + line ;
+            }
+        } catch (Exception e) {
+            result = "error";
+        }
+        Log.i("a", "fin");
+        return result;
+
+        /*
+            /**
+             * TODO
+             * Le code actuel est fait pour teter le serveurs. Cela envoit tourjours la meme requete.
+             * Il faut un algorithme qui fasse
+             * postParameters.add(new BasicNameValuePair(params[impaire], params[pair]))
+             *
+             * Il faut aussi changer les fonctions qui sont affectés.
+
+            */
 
     }
 

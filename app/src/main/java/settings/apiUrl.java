@@ -8,13 +8,13 @@ public abstract class apiUrl {
         return databaseUrl;
     }
 
-    private static String databaseUrl = "http://10.0.2.2:3000/";
+    private static String databaseUrl = "http://10.0.2.2:3000/api/";
 
 
     public static String getUserRoute(){
-        return getDatabaseUrl() + "user/";
+        return getDatabaseUrl() + "users/";
     }
-    public static String getUserRegisterRoute(){ return getUserRoute() + "signup"; }
+    public static String getUserRegisterRoute(){ return getUserRoute(); }
 
     public static String getBoardRoute() { return getDatabaseUrl() + "board/";}
 }
