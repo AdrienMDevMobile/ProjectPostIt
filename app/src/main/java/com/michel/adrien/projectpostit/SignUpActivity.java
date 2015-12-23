@@ -29,25 +29,25 @@ public class SignUpActivity extends ActionBarActivity{
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String login = ((EditText) findViewById(R.id.sign_up_activity_etLogin)).getText().toString();
+                String username = ((EditText) findViewById(R.id.sign_up_activity_etUsername)).getText().toString();
                 String password =
                         ((EditText) findViewById(R.id.sign_up_activity_etPassword)).getText().toString();
-                String mail = ((EditText) findViewById(R.id.sign_up_activity_etMail)).getText().toString();
+                String mail = ((EditText) findViewById(R.id.sign_up_activity_etEmail)).getText().toString();
                 /* After getting all the informations from the user we check their length.
                 If they are good, we show the confirm password fragment */
-                if (stringLengthControl.checkLoginLength(getBaseContext(), login) &&
-                        stringLengthControl.checkMailLength(getBaseContext(), mail) &&
+                if (stringLengthControl.checkUsernameLength(getBaseContext(), username) &&
+                        stringLengthControl.checkEmailLength(getBaseContext(), mail) &&
                         stringLengthControl.checkPasswordLength(getBaseContext(), password)) {
 
-                    DialogFragment confirmPasswordDialog = confirmPasswordFragment.newInstance(login, mail, password);
+                    DialogFragment confirmPasswordDialog = confirmPasswordFragment.newInstance(username, mail, password);
                     confirmPasswordDialog.show(getSupportFragmentManager(), "");
                 }
             }
         });
 
-        /*Return to login button */
-        Button goToLogIn = (Button)findViewById(R.id.sign_up_activity_btnGoToLogin);
-        goToLogIn.setOnClickListener(new View.OnClickListener() {
+        /*Return to username button */
+        Button goToLogin = (Button)findViewById(R.id.sign_up_activity_btnGoToLogin);
+        goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentToLogin = new Intent(SignUpActivity.this, LoginActivity.class);

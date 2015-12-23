@@ -16,18 +16,18 @@ public abstract class stringLengthControl {
     private static int duration = Toast.LENGTH_SHORT;
 
     //------------------------------BOOLEAN CONTROL FUNCTIONS------------------------------
-    public static boolean checkLoginLength(Context context, String login){
-        if (login.length() < stringLengthControl.getMinLengthLogin()) {
+    public static boolean checkUsernameLength(Context context, String username){
+        if (username.length() < stringLengthControl.getMinLengthUsername()) {
             Log.i("l", "trop court");
             Toast toast = Toast.makeText(context,
-                    R.string.login_too_short, duration);
+                    R.string.username_too_short, duration);
             toast.show();
             return false;
         }
-        if (login.length() > stringLengthControl.getMaxLengthLogin()) {
+        if (username.length() > stringLengthControl.getMaxLengthUsername()) {
             Log.i("l", "trop long");
             Toast toast = Toast.makeText(context,
-                    R.string.login_too_long, duration);
+                    R.string.username_too_long, duration);
             toast.show();
             return false;
         }
@@ -52,15 +52,15 @@ public abstract class stringLengthControl {
         return true;
     }
 
-    public static boolean checkMailLength(Context context, String mail){
-        if (mail.length() < stringLengthControl.getMinLengthMail()) {
+    public static boolean checkEmailLength(Context context, String mail){
+        if (mail.length() < stringLengthControl.getMinLengthEmail()) {
             Log.i("m", "trop court");
             Toast toast = Toast.makeText(context,
                     R.string.mail_too_short, duration);
             toast.show();
             return false;
         }
-        if (mail.length() > stringLengthControl.getMaxLengthMail()) {
+        if (mail.length() > stringLengthControl.getMaxLengthEmail()) {
             Log.i("m", "trop long");
             Toast toast = Toast.makeText(context,
                     R.string.mail_too_long, duration);
@@ -72,13 +72,13 @@ public abstract class stringLengthControl {
 
 
 //-----------------LENGTH LIMITATIONS INTS AND GETTERS---------------------------------------
-    public static int getMinLengthLogin() {
-        return minLengthLogin;
+    public static int getMinLengthUsername() {
+        return minLengthUsername;
     }
 
 
-    public static int getMaxLengthLogin() {
-        return maxLengthLogin;
+    public static int getMaxLengthUsername() {
+        return maxLengthUsername;
     }
 
     public static int getMinLengthPassword() {
@@ -89,24 +89,24 @@ public abstract class stringLengthControl {
         return maxLengthPassword;
     }
 
-    public static int getMinLengthMail() {
-        return minLengthMail;
+    public static int getMinLengthEmail() {
+        return minLengthEmail;
     }
 
-    public static int getMaxLengthMail() {
-        return maxLengthMail;
+    public static int getMaxLengthEmail() {
+        return maxLengthEmail;
     }
 
-    private static int minLengthLogin = 3;
+    private static int minLengthUsername = 3;
 
-    private static int maxLengthLogin = 15;
+    private static int maxLengthUsername = 15;
 
     private static int minLengthPassword = 5;
 
     private static int maxLengthPassword = 20;
 
-    private static int minLengthMail = 3;
+    private static int minLengthEmail = 3;
 
-    private static int maxLengthMail = 20;
+    private static int maxLengthEmail = 20;
 
 }

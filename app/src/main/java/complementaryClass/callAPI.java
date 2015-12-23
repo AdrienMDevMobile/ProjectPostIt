@@ -1,5 +1,6 @@
 package complementaryClass;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -16,17 +17,21 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Adrien on 04/12/2015.
- */
-public class callAPI extends AsyncTask<String, String, String> {
+public abstract class callAPI extends AsyncTask<String, String, String> {
 
+    private Context context;
+
+    public callAPI(Context context){
+        this.context=context;
+    }
+
+
+    public Context getContext(){
+        return context;
+    }
 
 
     @Override
-    /**
-     * Param 0 : URL
-     */
     protected String doInBackground(String... params) {
 
         HttpClient httpclient;
@@ -37,8 +42,11 @@ public class callAPI extends AsyncTask<String, String, String> {
         List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
         //On crée la liste qui contiendra tous nos paramètres
         //Et on y rajoute nos paramétres
-        postParameters.add(new BasicNameValuePair("email", "jean@jean.com"));
-        postParameters.add(new BasicNameValuePair("password", "jean"));
+        Log.i("e", "avant boucle");
+        for(int i = 1; i< params.length; i=i+2){
+            Log.i("e", "boucle");
+            postParameters.add(new BasicNameValuePair(params[i],params[i+1]));
+        }
 
         Log.i("try", "nous y sommes");
 
@@ -62,7 +70,7 @@ public class callAPI extends AsyncTask<String, String, String> {
         try {
             Log.i("a", "3");
             BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-            String line = "";
+            String line;
             Log.i("a", "4");
             while ((line = rd.readLine()) != null)
             {
@@ -72,22 +80,8 @@ public class callAPI extends AsyncTask<String, String, String> {
             result = "error";
         }
         Log.i("a", "fin");
+        Log.i("j", result);
         return result;
-
-        /*
-            /**
-             * TODO
-             * Le code actuel est fait pour teter le serveurs. Cela envoit tourjours la meme requete.
-             * Il faut un algorithme qui fasse
-             * postParameters.add(new BasicNameValuePair(params[impaire], params[pair]))
-             *
-             * Il faut aussi changer les fonctions qui sont affectés.
-
-            */
-
-    }
-
-    protected void onPostExecute(String result) {
 
     }
 

@@ -13,16 +13,17 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
 
-    <string name="insert_login">Insert login</string>
+    <string name="insert_username">Insert username</string>
     <string name="insert_password">Password</string>
     <string name="insert_firstName">First Name</string>
     <string name="insert_lastName">Last Name</string>
-    <string name="insert_mail">Mail</string>
+    <string name="insert_email">EMail</string>
     <string name="string_insert_password_again">Please insert password again</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
 
-    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
     <string name="Sign_up">Sign up</string>
     <string name="go_to_login">Already have an account ?</string>
 
