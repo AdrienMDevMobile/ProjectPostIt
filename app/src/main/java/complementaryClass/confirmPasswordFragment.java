@@ -3,6 +3,7 @@ package complementaryClass;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -52,7 +53,7 @@ public class confirmPasswordFragment extends DialogFragment {
                         //C'est bon
                         if(confirmedPassword.equals(getArguments().getString(argumentPassword))){
                             Toast toast = Toast.makeText(getActivity().getBaseContext(),
-                                    "C'est bon", Toast.LENGTH_SHORT);
+                                    Resources.getSystem().getString(R.string.informations_sended), Toast.LENGTH_LONG);
                             toast.show();
 
                             new callAPISignUp(getActivity().getBaseContext()).execute(apiUrl.getUserRegisterRoute(), "username", getArguments().getString(argumentusername),
@@ -60,7 +61,7 @@ public class confirmPasswordFragment extends DialogFragment {
                         }
                         else {
                             Toast toast = Toast.makeText(getActivity().getBaseContext(),
-                                    R.string.password_confirm_wrong, Toast.LENGTH_SHORT);
+                                    R.string.password_confirm_wrong, Toast.LENGTH_LONG);
                             toast.show();
                         }
                     }

@@ -36,7 +36,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/go_to_login"
+        android:text="@string/login"
         android:id="@+id/login_activity_btnLogin"
         android:layout_marginTop="57dp"
         android:layout_below="@+id/login_activity_etPassword"
@@ -46,7 +46,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Sign_up"
+        android:text="@string/go_to_sign_up"
         android:id="@+id/login_activity_btnGoToSignUp"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/login_activity_btnLogin"

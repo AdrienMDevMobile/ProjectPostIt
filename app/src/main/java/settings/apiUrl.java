@@ -15,6 +15,7 @@ public abstract class apiUrl {
         return getDatabaseUrl() + "users/";
     }
     public static String getUserRegisterRoute(){ return getUserRoute(); }
+    public static String getUserLoginRoute(){ return getUserRoute() + "login"; }
 
     public static String getBoardRoute() { return getDatabaseUrl() + "board/";}
 }

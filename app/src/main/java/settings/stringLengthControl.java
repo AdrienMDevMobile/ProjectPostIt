@@ -20,14 +20,14 @@ public abstract class stringLengthControl {
         if (username.length() < stringLengthControl.getMinLengthUsername()) {
             Log.i("l", "trop court");
             Toast toast = Toast.makeText(context,
-                    R.string.username_too_short, duration);
+                    context.getString(R.string.username_too_short) + stringLengthControl.getMinLengthUsername(), duration);
             toast.show();
             return false;
         }
         if (username.length() > stringLengthControl.getMaxLengthUsername()) {
             Log.i("l", "trop long");
             Toast toast = Toast.makeText(context,
-                    R.string.username_too_long, duration);
+                   context.getString(R.string.username_too_long) + stringLengthControl.getMaxLengthUsername(), duration);
             toast.show();
             return false;
         }
@@ -38,14 +38,14 @@ public abstract class stringLengthControl {
         if (password.length() < stringLengthControl.getMinLengthPassword()) {
             Log.i("p", "trop court");
             Toast toast = Toast.makeText(context,
-                    R.string.password_too_short, duration);
+                    context.getString(R.string.password_too_short) + stringLengthControl.getMinLengthPassword() , duration);
             toast.show();
             return false;
         }
         if (password.length() > stringLengthControl.getMaxLengthPassword()) {
             Log.i("p", "trop long");
             Toast toast = Toast.makeText(context,
-                    R.string.password_too_long, duration);
+                    context.getString(R.string.password_too_long) + stringLengthControl.getMaxLengthPassword(), duration);
             toast.show();
             return false;
         }
@@ -56,14 +56,14 @@ public abstract class stringLengthControl {
         if (mail.length() < stringLengthControl.getMinLengthEmail()) {
             Log.i("m", "trop court");
             Toast toast = Toast.makeText(context,
-                    R.string.mail_too_short, duration);
+                    context.getString(R.string.mail_too_short) + stringLengthControl.getMinLengthEmail(), duration);
             toast.show();
             return false;
         }
         if (mail.length() > stringLengthControl.getMaxLengthEmail()) {
             Log.i("m", "trop long");
             Toast toast = Toast.makeText(context,
-                    R.string.mail_too_long, duration);
+                    context.getString(R.string.mail_too_long) + stringLengthControl.getMaxLengthEmail(), duration);
             toast.show();
             return false;
         }

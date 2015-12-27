@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="signUp_successful">You sucessfully signed up</string>
+    <string name="logIn_successful">You sucessfully logged In</string>
+
+    <string name="sharedPreferences_session">SPSessions</string>
+    <string name="sharedPreferences_values_session_token">SPSessions</string>
 </resources>

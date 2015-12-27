@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="username_too_short">username too short. Min length : 3</string>
-    <string name="username_too_long">username too long. Max length : 15</string>
+    <string name="username_too_short">username too short. Min length : </string>
+    <string name="username_too_long">username too long. Max length : </string>
 
-    <string name="password_too_short">Password too short. Min length : 5</string>
-    <string name="password_too_long">Password too long. Max length : 20</string>
+    <string name="password_too_short">Password too short. Min length : </string>
+    <string name="password_too_long">Password too long. Max length : </string>
 
-    <string name="mail_too_short">Mail too short. Min length : 3</string>
-    <string name="mail_too_long">Mail too long. Max length : 20</string>
+    <string name="mail_too_short">Mail too short. Min length : </string>
+    <string name="mail_too_long">Mail too long. Max length : </string>
 
     <string name="password_confirm_wrong">The passwords don\'t match</string>
+
+    <string name="informations_sended">The passwords have been sended</string>
 </resources>
