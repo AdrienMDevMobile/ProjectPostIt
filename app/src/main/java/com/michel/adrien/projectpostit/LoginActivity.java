@@ -1,18 +1,15 @@
 package com.michel.adrien.projectpostit;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import complementaryClass.callAPILogin;
+import callAPI.callAPILogin;
 import complementaryClass.loggedInCheck;
-import settings.apiUrl;
-import settings.stringLengthControl;
+import settings.stringControl;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -20,19 +17,15 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Redirect if the user is loggedIn
-
+        Intent intentIfLoggedIn = new Intent(LoginActivity.this, LoggedInActivity.class);
+        if(loggedInCheck.isLoggedIn(getBaseContext())){
+            startActivity(intentIfLoggedIn);
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //PreferenceManager.setDefaultValues(this, R.xml.preference, false);
 
-        Intent intentIfLoggedIn = new Intent(LoginActivity.this, SignUpActivity.class);
-
-        SharedPreferences settings = getSharedPreferences(getString(R.string.sharedPreferences_session), 0);
-        Log.i("t", "nous avonsu pris les share preferences");
-        if(loggedInCheck.isLoggedIn(getBaseContext())){
-            startActivity(intentIfLoggedIn);
-        }
 
         String username = ((EditText) findViewById(R.id.login_activity_etUsername)).getText().toString();
 
@@ -46,11 +39,11 @@ public class LoginActivity extends ActionBarActivity {
 
                 /* After getting all the informations from the user we check their length.
                 If they are good, we show the confirm password fragment */
-                if (stringLengthControl.checkUsernameLength(getBaseContext(), username) &&
-                        stringLengthControl.checkPasswordLength(getBaseContext(), password)) {
+                if (stringControl.checkUsernameLength(getBaseContext(), username) &&
+                        stringControl.checkPasswordLength(getBaseContext(), password)) {
 
                     //Call of the API
-                    new callAPILogin(getBaseContext()).execute(apiUrl.getUserLoginRoute(), "username", username, "password", password);
+                    new callAPILogin(getBaseContext()).execute("", "username", username, "password", password);
                 }
             }
         });
@@ -65,8 +58,6 @@ public class LoginActivity extends ActionBarActivity {
                 startActivity(intentSignUp);
             }
         });
-
-        //new CallAPI().execute("");
 
     }
 

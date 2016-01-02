@@ -2,7 +2,12 @@
 <resources>
     <string name="signUp_successful">You sucessfully signed up</string>
     <string name="logIn_successful">You sucessfully logged In</string>
+    <string name="error_not_logged_In">Error : You are not logged </string>
 
     <string name="sharedPreferences_session">SPSessions</string>
-    <string name="sharedPreferences_values_session_token">SPSessions</string>
+    <string name="sharedPreferences_values_session_token">sessionToken</string>
+    <string name="sharedPreferences_values_user_id">userId</string>
+
+    <string name="json_problem_toast"> Problem with the JSON object</string>
+
 </resources>

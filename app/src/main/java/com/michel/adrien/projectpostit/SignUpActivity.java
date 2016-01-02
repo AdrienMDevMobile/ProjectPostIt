@@ -11,13 +11,21 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import complementaryClass.confirmPasswordFragment;
-import settings.stringLengthControl;
+import complementaryClass.loggedInCheck;
+import settings.stringControl;
 
 
 public class SignUpActivity extends ActionBarActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Redirect if the user is loggedIn
+        Intent intentIfLoggedIn = new Intent(SignUpActivity.this, LoggedInActivity.class);
+        if(loggedInCheck.isLoggedIn(getBaseContext())){
+            startActivity(intentIfLoggedIn);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
@@ -32,14 +40,16 @@ public class SignUpActivity extends ActionBarActivity{
                 String username = ((EditText) findViewById(R.id.sign_up_activity_etUsername)).getText().toString();
                 String password =
                         ((EditText) findViewById(R.id.sign_up_activity_etPassword)).getText().toString();
-                String mail = ((EditText) findViewById(R.id.sign_up_activity_etEmail)).getText().toString();
+                String email = ((EditText) findViewById(R.id.sign_up_activity_etEmail)).getText().toString();
                 /* After getting all the informations from the user we check their length.
                 If they are good, we show the confirm password fragment */
-                if (stringLengthControl.checkUsernameLength(getBaseContext(), username) &&
-                        stringLengthControl.checkEmailLength(getBaseContext(), mail) &&
-                        stringLengthControl.checkPasswordLength(getBaseContext(), password)) {
+                if (stringControl.checkUsernameLength(getBaseContext(), username) &&
+                        stringControl.checkEmailLength(getBaseContext(), email) &&
+                        stringControl.checkPasswordLength(getBaseContext(), password) &&
+                         stringControl.is_Valid_Email(getBaseContext(), email))
+                {
 
-                    DialogFragment confirmPasswordDialog = confirmPasswordFragment.newInstance(username, mail, password);
+                    DialogFragment confirmPasswordDialog = confirmPasswordFragment.newInstance(username, email, password);
                     confirmPasswordDialog.show(getSupportFragmentManager(), "");
                 }
             }

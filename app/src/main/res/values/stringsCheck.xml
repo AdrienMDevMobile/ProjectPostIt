@@ -6,8 +6,9 @@
     <string name="password_too_short">Password too short. Min length : </string>
     <string name="password_too_long">Password too long. Max length : </string>
 
-    <string name="mail_too_short">Mail too short. Min length : </string>
-    <string name="mail_too_long">Mail too long. Max length : </string>
+    <string name="email_too_short">Mail too short. Min length : </string>
+    <string name="email_too_long">Mail too long. Max length : </string>
+    <string name="email_format_not_valid">The mail format is not valid</string>
 
     <string name="password_confirm_wrong">The passwords don\'t match</string>
 

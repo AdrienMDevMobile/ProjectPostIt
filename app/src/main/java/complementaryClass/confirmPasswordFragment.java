@@ -3,16 +3,16 @@ package complementaryClass;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.michel.adrien.projectpostit.R;
 
-import settings.apiUrl;
+import callAPI.callAPISignUp;
 
 public class confirmPasswordFragment extends DialogFragment {
 
@@ -53,10 +53,11 @@ public class confirmPasswordFragment extends DialogFragment {
                         //C'est bon
                         if(confirmedPassword.equals(getArguments().getString(argumentPassword))){
                             Toast toast = Toast.makeText(getActivity().getBaseContext(),
-                                    Resources.getSystem().getString(R.string.informations_sended), Toast.LENGTH_LONG);
+                                    getString(R.string.informations_sended), Toast.LENGTH_LONG);
                             toast.show();
 
-                            new callAPISignUp(getActivity().getBaseContext()).execute(apiUrl.getUserRegisterRoute(), "username", getArguments().getString(argumentusername),
+                            Log.i("api", "We are about to start the CallAPISignUp");
+                            new callAPISignUp(getActivity().getBaseContext()).execute("", "username", getArguments().getString(argumentusername),
                                     "password", getArguments().getString(argumentPassword), "email", getArguments().getString(argumentMail));
                         }
                         else {

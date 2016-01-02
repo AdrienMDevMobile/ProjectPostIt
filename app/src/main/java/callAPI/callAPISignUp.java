@@ -1,4 +1,4 @@
-package complementaryClass;
+package callAPI;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,10 +8,21 @@ import com.michel.adrien.projectpostit.R;
 
 import org.json.JSONObject;
 
-public class callAPISignUp extends callAPI {
+import settings.apiUrl;
+
+public class callAPISignUp extends callAPIPOST {
 
     public callAPISignUp(Context context){
         super(context);
+    }
+
+    @Override
+    protected String doInBackground(String... params) {
+        Log.i("api", "We enter doInBackGround for call API Sign up");
+        params[0] =  apiUrl.getUserRegisterRoute();
+
+        Log.i("api", "We are about to start the super.doInBackground");
+        return super.doInBackground(params);
     }
 
     protected void onPostExecute(String result) {
@@ -30,7 +41,7 @@ public class callAPISignUp extends callAPI {
             }
         }
         catch (Throwable t) {
-            Toast.makeText(getContext(), "Problem with the JSON object", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getContext().getString(R.string.json_problem_toast), Toast.LENGTH_SHORT).show();
             Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
         }
 

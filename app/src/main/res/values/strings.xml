@@ -26,6 +26,7 @@
     <string name="email">Email</string>
     <string name="sign_up">Sign up</string>
     <string name="login">Login</string>
+    <string name="logout">Logout</string>
     <string name="go_to_login">Already have an account ?</string>
     <string name="go_to_sign_up">Create an account</string>
 

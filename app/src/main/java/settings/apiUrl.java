@@ -12,10 +12,10 @@ public abstract class apiUrl {
 
 
     public static String getUserRoute(){
-        return getDatabaseUrl() + "users/";
+        return getDatabaseUrl() + "Members/";
     }
     public static String getUserRegisterRoute(){ return getUserRoute(); }
     public static String getUserLoginRoute(){ return getUserRoute() + "login"; }
 
-    public static String getBoardRoute() { return getDatabaseUrl() + "board/";}
+    public static String getBoardRoute() { return getDatabaseUrl() + "Board/";}
 }

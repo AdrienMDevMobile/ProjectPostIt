@@ -14,15 +14,15 @@ import exceptions.notLoggedInException;
 public abstract class loggedInCheck {
 
     /*
-    Private function that gives the value of the token. Is used for other functions of the class.
+    Private function that gives the value of the value in the SharedReferences. Is used for other functions of the class.
      */
-    static private String getLoginTokenValue(Context context){
+    static private String getSharedReferencesValue(Context context, String sharedReferencesName){
         Log.i("t", "Nous rentrons dans getLoginTokenValue");
         SharedPreferences settings = context.getSharedPreferences(context.getString(R.string.sharedPreferences_session), 0);
-        String token = settings.getString(context.getString(R.string.sharedPreferences_values_session_token), null);
+        String toReturn = settings.getString(sharedReferencesName, null);
 
         Log.i("t", "Nous sortons de getLoginTokenValue");
-        return token;
+        return toReturn;
     }
 
     /*
@@ -30,7 +30,8 @@ public abstract class loggedInCheck {
      */
     static public boolean isLoggedIn(Context context){
         Log.i("t", "Nous rentrons dans is loggedIn");
-        String token = getLoginTokenValue(context);
+        String token = getSharedReferencesValue(context, context.getString(R.string.sharedPreferences_values_session_token));
+
 
 
         if(token != null){
@@ -50,7 +51,16 @@ public abstract class loggedInCheck {
             throw new notLoggedInException();
         }
         Log.i("t", "Nous sortons de isLoggedIn");
-        return getLoginTokenValue(context);
+        return getSharedReferencesValue(context, context.getString(R.string.sharedPreferences_values_session_token));
+    }
+
+    static public String getLogInUserId(Context context) throws  notLoggedInException {
+        Log.i("t", "Nous rentrons dans is getLogInUserId");
+        if (!loggedInCheck.isLoggedIn(context)) {
+            throw new notLoggedInException();
+        }
+        Log.i("t", "Nous sortons de getLogInUserId");
+        return getSharedReferencesValue(context, context.getString(R.string.sharedPreferences_values_user_id));
     }
 
 

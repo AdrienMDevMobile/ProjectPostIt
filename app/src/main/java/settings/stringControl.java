@@ -11,23 +11,23 @@ import com.michel.adrien.projectpostit.R;
  * Also there are the booleans functions that checks if the lengths are respected.
  * A toast is shown if not.
  */
-public abstract class stringLengthControl {
+public abstract class stringControl {
 
     private static int duration = Toast.LENGTH_SHORT;
 
     //------------------------------BOOLEAN CONTROL FUNCTIONS------------------------------
     public static boolean checkUsernameLength(Context context, String username){
-        if (username.length() < stringLengthControl.getMinLengthUsername()) {
+        if (username.length() < stringControl.getMinLengthUsername()) {
             Log.i("l", "trop court");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.username_too_short) + stringLengthControl.getMinLengthUsername(), duration);
+                    context.getString(R.string.username_too_short) + stringControl.getMinLengthUsername(), duration);
             toast.show();
             return false;
         }
-        if (username.length() > stringLengthControl.getMaxLengthUsername()) {
+        if (username.length() > stringControl.getMaxLengthUsername()) {
             Log.i("l", "trop long");
             Toast toast = Toast.makeText(context,
-                   context.getString(R.string.username_too_long) + stringLengthControl.getMaxLengthUsername(), duration);
+                   context.getString(R.string.username_too_long) + stringControl.getMaxLengthUsername(), duration);
             toast.show();
             return false;
         }
@@ -35,39 +35,60 @@ public abstract class stringLengthControl {
     }
 
     public static boolean checkPasswordLength(Context context, String password){
-        if (password.length() < stringLengthControl.getMinLengthPassword()) {
+        if (password.length() < stringControl.getMinLengthPassword()) {
             Log.i("p", "trop court");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.password_too_short) + stringLengthControl.getMinLengthPassword() , duration);
+                    context.getString(R.string.password_too_short) + stringControl.getMinLengthPassword() , duration);
             toast.show();
             return false;
         }
-        if (password.length() > stringLengthControl.getMaxLengthPassword()) {
+        if (password.length() > stringControl.getMaxLengthPassword()) {
             Log.i("p", "trop long");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.password_too_long) + stringLengthControl.getMaxLengthPassword(), duration);
+                    context.getString(R.string.password_too_long) + stringControl.getMaxLengthPassword(), duration);
             toast.show();
             return false;
         }
         return true;
     }
 
-    public static boolean checkEmailLength(Context context, String mail){
-        if (mail.length() < stringLengthControl.getMinLengthEmail()) {
+    public static boolean checkEmailLength(Context context, String email){
+        if (email.length() < stringControl.getMinLengthEmail()) {
             Log.i("m", "trop court");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.mail_too_short) + stringLengthControl.getMinLengthEmail(), duration);
+                    context.getString(R.string.email_too_short) + stringControl.getMinLengthEmail(), duration);
             toast.show();
             return false;
         }
-        if (mail.length() > stringLengthControl.getMaxLengthEmail()) {
+        if (email.length() > stringControl.getMaxLengthEmail()) {
             Log.i("m", "trop long");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.mail_too_long) + stringLengthControl.getMaxLengthEmail(), duration);
+                    context.getString(R.string.email_too_long) + stringControl.getMaxLengthEmail(), duration);
             toast.show();
             return false;
         }
         return true;
+    }
+
+    /*
+    Two functions that check if the email has a valid format (have an @ and a .something
+     */
+    public static boolean is_Valid_Email(Context context, String email) {
+        if (email == null || !isEmailValid(email)) {
+            Log.i("m", "format non valide");
+            Toast toast = Toast.makeText(context,
+                    context.getString(R.string.email_format_not_valid), duration);
+            toast.show();
+            return false;
+        }
+        else {
+            Log.i("m", "format valide");
+            return true;
+        }
+    }
+
+    private static boolean isEmailValid(String email){
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
 
