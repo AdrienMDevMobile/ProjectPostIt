@@ -27,21 +27,23 @@ Then : odd : name of the value, even : value
 public abstract class callAPI extends AsyncTask<String, String, String> {
 
     private Context context;
-    HttpRequestBase request;
+    private HttpRequestBase request;
 
-    /*
-    Those functions are call by the inferior classes to define and get the HttpBase request.
-    request is a HttpGet for the APIGet subclass. A HttpPost for the APIPost subclass
-     */
-    protected  void setRequest(HttpRequestBase request){
-        this.request = request;
-    }
-    protected  HttpRequestBase getRequest(){
-        return request;
-    }
 
     public callAPI(Context context){
         this.context=context.getApplicationContext();
+        this.request = request;
+    }
+
+    /*
+Those functions are call by the inferior classes to define and get the HttpBase request.
+request is a HttpGet for the APIGet subclass. A HttpPost for the APIPost subclass
+ */
+    protected  HttpRequestBase getRequest(){
+        return request;
+    }
+    protected void setRequest(HttpRequestBase request){
+        this.request =request;
     }
 
     @Override
@@ -52,12 +54,12 @@ public abstract class callAPI extends AsyncTask<String, String, String> {
         String result = " ";
 
         List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-        //On crée la liste qui contiendra tous nos paramètres
-        //Et on y rajoute nos paramétres
+        //We make the list that contains all the infos for the Post request.
+        //We also make the String that will added for the GET request url
         Log.i("callApi", "avant boucle");
-        for(int i = 1; i< params.length; i=i+2){
+        for(int i = 0; i< params.length; i=i+2){
             Log.i("callApi", "boucle");
-            postParameters.add(new BasicNameValuePair(params[i],params[i+1]));
+            postParameters.add(new BasicNameValuePair(params[i], params[i + 1]));
         }
 
         Log.i("callAPI", "fin de la boucle");
@@ -65,8 +67,8 @@ public abstract class callAPI extends AsyncTask<String, String, String> {
         try {
             httpclient = new DefaultHttpClient();
             Log.i("URL", params[0]);
-            request = new HttpPost(params[0]);
 
+            //If Post request, we add the parameters to the entity
             if(request.getClass() == HttpPost.class){
                 ((HttpPost)request).setEntity(
                         new

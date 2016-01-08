@@ -13,13 +13,13 @@ import settings.apiUrl;
 public class callAPISignUp extends callAPIPOST {
 
     public callAPISignUp(Context context){
-        super(context);
+        super(context, apiUrl.getUserRegisterRoute());
     }
 
     @Override
     protected String doInBackground(String... params) {
         Log.i("api", "We enter doInBackGround for call API Sign up");
-        params[0] =  apiUrl.getUserRegisterRoute();
+        //params[0] =
 
         Log.i("api", "We are about to start the super.doInBackground");
         return super.doInBackground(params);

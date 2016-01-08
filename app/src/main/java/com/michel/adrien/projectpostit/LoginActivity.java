@@ -43,7 +43,7 @@ public class LoginActivity extends ActionBarActivity {
                         stringControl.checkPasswordLength(getBaseContext(), password)) {
 
                     //Call of the API
-                    new callAPILogin(getBaseContext()).execute("", "username", username, "password", password);
+                    new callAPILogin(getBaseContext()).execute("username", username, "password", password);
                 }
             }
         });

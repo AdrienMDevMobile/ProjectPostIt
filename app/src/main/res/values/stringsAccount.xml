@@ -10,4 +10,6 @@
 
     <string name="json_problem_toast"> Problem with the JSON object</string>
 
+    <string name="loading_boards">Loading boards, please wait.</string>
+
 </resources>

@@ -57,7 +57,7 @@ public class confirmPasswordFragment extends DialogFragment {
                             toast.show();
 
                             Log.i("api", "We are about to start the CallAPISignUp");
-                            new callAPISignUp(getActivity().getBaseContext()).execute("", "username", getArguments().getString(argumentusername),
+                            new callAPISignUp(getActivity().getBaseContext()).execute("username", getArguments().getString(argumentusername),
                                     "password", getArguments().getString(argumentPassword), "email", getArguments().getString(argumentMail));
                         }
                         else {

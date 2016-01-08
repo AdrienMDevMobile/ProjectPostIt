@@ -34,5 +34,7 @@
 
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_logged_in">LoggedInActivity</string>
+    <string name="title_activity_loading">LoadingActivity</string>
+    <string name="title_activity_test_drawer_builder">testDrawerBuilder</string>
 
 </resources>

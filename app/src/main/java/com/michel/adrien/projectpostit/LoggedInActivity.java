@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import callAPI.callAPIBoardList;
+import callAPI.callAPIBoardListTest;
+import complementaryClass.loggedInCheck;
+import exceptions.notLoggedInException;
 
 public class LoggedInActivity extends ActionBarActivity {
 
@@ -43,7 +45,12 @@ public class LoggedInActivity extends ActionBarActivity {
             }
         });
 
-        new callAPIBoardList(getBaseContext(), (TextView)findViewById(R.id.logged_in_activity_twListBoards)).execute();
+        try {
+            new callAPIBoardListTest(getBaseContext(), (TextView) findViewById(R.id.logged_in_activity_twListBoards), null).execute("access_token", loggedInCheck.getLogInToken(getBaseContext()));
+        }
+        catch (notLoggedInException e){
+            Toast.makeText(getBaseContext(), getString(R.string.error_not_logged_In), Toast.LENGTH_SHORT).show();
+        }
         //Rechercher les differents boards
         //new callAPIGetBoards(getBaseContext()).execute(apiUrl.getUserLoginRoute(), "token", token);
     }

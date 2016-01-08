@@ -21,12 +21,11 @@ import settings.apiUrl;
 public class callAPILogin extends callAPIPOST {
 
     public callAPILogin(Context context){
-        super(context);
+        super(context, apiUrl.getUserLoginRoute());
     }
 
     @Override
     protected String doInBackground(String... params) {
-        params[0] =  apiUrl.getUserLoginRoute();
 
         return super.doInBackground(params);
     }

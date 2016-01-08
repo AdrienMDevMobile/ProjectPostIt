@@ -15,7 +15,7 @@ import complementaryClass.loggedInCheck;
 import settings.stringControl;
 
 
-public class SignUpActivity extends ActionBarActivity{
+public class SignUpActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
