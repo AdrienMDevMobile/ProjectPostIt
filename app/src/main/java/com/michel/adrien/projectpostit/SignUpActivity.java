@@ -21,7 +21,7 @@ public class SignUpActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //Redirect if the user is loggedIn
-        Intent intentIfLoggedIn = new Intent(SignUpActivity.this, LoggedInActivity.class);
+        Intent intentIfLoggedIn = new Intent(SignUpActivity.this, LoadingActivity.class);
         if(loggedInCheck.isLoggedIn(getBaseContext())){
             startActivity(intentIfLoggedIn);
         }

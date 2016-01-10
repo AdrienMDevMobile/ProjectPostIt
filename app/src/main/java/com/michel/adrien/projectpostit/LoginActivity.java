@@ -17,7 +17,7 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Redirect if the user is loggedIn
-        Intent intentIfLoggedIn = new Intent(LoginActivity.this, LoggedInActivity.class);
+        Intent intentIfLoggedIn = new Intent(LoginActivity.this, LoadingActivity.class);
         if(loggedInCheck.isLoggedIn(getBaseContext())){
             startActivity(intentIfLoggedIn);
         }

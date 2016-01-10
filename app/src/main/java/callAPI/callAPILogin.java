@@ -7,7 +7,7 @@ import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.michel.adrien.projectpostit.LoggedInActivity;
+import com.michel.adrien.projectpostit.LoadingActivity;
 import com.michel.adrien.projectpostit.R;
 
 import org.json.JSONException;
@@ -52,8 +52,8 @@ public class callAPILogin extends callAPIPOST {
                 editor.commit();
 
                /* Context t = getContext().getApplicationContext();
-                getContext().startActivity(new Intent(getContext(), LoggedInActivity.class)); */
-                Intent intent = new Intent(getContext(), LoggedInActivity.class);
+                getContext().startActivity(new Intent(getContext(), LoadingActivity.class)); */
+                Intent intent = new Intent(getContext(), LoadingActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 getContext().startActivity(intent);

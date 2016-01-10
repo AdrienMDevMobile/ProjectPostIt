@@ -13,18 +13,22 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:elevation="4dp" />
 
+
     <FrameLayout
         android:layout_below="@id/toolbar"
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtLabel"
-            android:layout_gravity="center"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test"
-            android:textSize="16sp" />
+            android:text="@string/logout"
+            android:id="@+id/main_activity_btnLogOut"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="143dp"
+            android:layout_gravity="center" />
+
     </FrameLayout>
 </RelativeLayout>

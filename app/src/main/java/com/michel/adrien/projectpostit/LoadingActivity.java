@@ -1,8 +1,8 @@
 package com.michel.adrien.projectpostit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.widget.Toast;
 
 import callAPI.callAPIBoardList;
 import complementaryClass.loggedInCheck;
@@ -25,7 +25,8 @@ public class LoadingActivity extends ActionBarActivity {
             new callAPIBoardList(getBaseContext(), null).execute("access_token", loggedInCheck.getLogInToken(getBaseContext()));
         }
         catch (notLoggedInException e){
-            Toast.makeText(getBaseContext(), getString(R.string.error_not_logged_In), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
     }
 

@@ -1,14 +1,19 @@
 package com.michel.adrien.projectpostit;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
@@ -19,23 +24,52 @@ import callAPI.callAPIBoardList;
 public class MainActivity extends AppCompatActivity  {
 
 
-    private Drawer result = null;
+    private Drawer sideMenu = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        Button logout = (Button)findViewById(R.id.main_activity_btnLogOut);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.sharedPreferences_session), 0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove(getBaseContext().getString(R.string.sharedPreferences_values_session_token));
+                editor.remove(getBaseContext().getString(R.string.sharedPreferences_values_user_id));
+                editor.commit();
+                //editor.clear();
+                Log.i("SharedPreferences", "Cleared");
+
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        // Handle Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         String boardList = getIntent().getStringExtra(callAPIBoardList.INTENT_EXTRA_BOARDS);
+
+        PrimaryDrawerItem listDrawerItem[] = new PrimaryDrawerItem[0];
+
         /*
         TODO : changer le catch
          */
         try {
             JSONArray jsonReader = new JSONArray(boardList);
+            listDrawerItem = new PrimaryDrawerItem[jsonReader.length()];
+
             for(int compteur=0; compteur<jsonReader.length(); compteur++){
                 Log.i("json", jsonReader.getJSONObject(compteur).getString("name"));
+                listDrawerItem[compteur] = new PrimaryDrawerItem().withName(jsonReader.getJSONObject(compteur).getString("name"));
             }
-            Log.i("mainActi", boardList);
+
         }
         catch(Exception e){
             Log.e("mainActi", "error in main activity");
@@ -43,10 +77,11 @@ public class MainActivity extends AppCompatActivity  {
         }
 
         //Create the drawer
-        result = new DrawerBuilder()
+        sideMenu = new DrawerBuilder()
                 .withActivity(this)
-                        //.withToolbar(toolbar)
-                .inflateMenu(R.menu.example_menu)
+                .withToolbar(toolbar)
+               // .inflateMenu(R.menu.example_menu)
+                .addDrawerItems(listDrawerItem)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
@@ -77,8 +112,8 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     public void onBackPressed() {
         //handle the back press :D close the drawer first and if the drawer is closed close the activity
-        if (result != null && result.isDrawerOpen()) {
-            result.closeDrawer();
+        if (sideMenu != null && sideMenu.isDrawerOpen()) {
+            sideMenu.closeDrawer();
         } else {
             super.onBackPressed();
         }
