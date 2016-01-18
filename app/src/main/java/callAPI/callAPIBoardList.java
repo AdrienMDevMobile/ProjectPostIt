@@ -7,7 +7,7 @@ import android.util.Log;
 import com.michel.adrien.projectpostit.MainActivity;
 
 import exceptions.NotLoggedInExceptiona;
-import settings.ApiUrla;
+import settings.ApiUrl;
 
 /**
  * Created by Adrien on 30/12/2015.
@@ -17,7 +17,7 @@ public class callAPIBoardList extends callAPIGET {
     public final static String INTENT_EXTRA_BOARDS = "extraBoards";
 
     public callAPIBoardList(Context context, String userId) throws NotLoggedInExceptiona {
-        super(context, ApiUrla.getUserBoardsRoute(context, userId));
+        super(context, ApiUrl.getUserBoardsRoute(context, userId));
     }
 
 

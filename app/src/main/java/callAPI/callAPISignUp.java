@@ -8,12 +8,12 @@ import com.michel.adrien.projectpostit.R;
 
 import org.json.JSONObject;
 
-import settings.ApiUrla;
+import settings.ApiUrl;
 
 public class callAPISignUp extends callAPIPOST {
 
     public callAPISignUp(Context context){
-        super(context, ApiUrla.getUserRegisterRoute());
+        super(context, ApiUrl.getUserRegisterRoute());
     }
 
     @Override
