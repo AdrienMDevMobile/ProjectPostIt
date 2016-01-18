@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.michel.adrien.projectpostit.R;
 
-public class CreateBoardFragment extends DialogFragment {
+public class CreateBoardFragmenta extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
