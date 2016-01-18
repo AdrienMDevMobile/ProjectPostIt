@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import callAPI.callAPILogin;
+import callAPI.CallAPILogina;
 import complementaryClass.LoggedInCheck;
 import settings.StringControl;
 
@@ -43,7 +43,7 @@ public class LoginActivity extends ActionBarActivity {
                         StringControl.checkPasswordLength(getBaseContext(), password)) {
 
                     //Call of the API
-                    new callAPILogin(getBaseContext()).execute("username", username, "password", password);
+                    new CallAPILogina(getBaseContext()).execute("username", username, "password", password);
                 }
             }
         });

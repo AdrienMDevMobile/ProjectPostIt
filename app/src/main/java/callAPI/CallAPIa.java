@@ -24,13 +24,13 @@ doInBackground and params table.
 The first String in params is the adress. It is determined by the subclass.
 Then : odd : name of the value, even : value
  */
-public abstract class callAPI extends AsyncTask<String, String, String> {
+public abstract class CallAPIa extends AsyncTask<String, String, String> {
 
     private Context context;
     private HttpRequestBase request;
 
 
-    public callAPI(Context context){
+    public CallAPIa(Context context){
         this.context=context.getApplicationContext();
         this.request = request;
     }
