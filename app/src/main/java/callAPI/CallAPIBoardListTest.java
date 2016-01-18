@@ -10,11 +10,11 @@ import settings.ApiUrl;
 /**
  * Created by Adrien on 30/12/2015.
  */
-public class CallAPIBoardListTesta extends CallAPIGETa {
+public class CallAPIBoardListTest extends CallAPIGET {
 
     TextView textView;
 
-    public CallAPIBoardListTesta(Context context, TextView textView, String userId) throws NotLoggedInException {
+    public CallAPIBoardListTest(Context context, TextView textView, String userId) throws NotLoggedInException {
         super(context, ApiUrl.getUserBoardsRoute(context, userId));
         this.textView = textView;
     }

@@ -10,9 +10,9 @@ import org.json.JSONObject;
 
 import settings.ApiUrl;
 
-public class CallAPISignUpa extends CallAPIPOSTa {
+public class CallAPISignUp extends CallAPIPOST {
 
-    public CallAPISignUpa(Context context){
+    public CallAPISignUp(Context context){
         super(context, ApiUrl.getUserRegisterRoute());
     }
 

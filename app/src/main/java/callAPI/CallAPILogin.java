@@ -18,9 +18,9 @@ import settings.ApiUrl;
 /**
  * Created by Adrien on 27/12/2015.
  */
-public class CallAPILogina extends CallAPIPOSTa {
+public class CallAPILogin extends CallAPIPOST {
 
-    public CallAPILogina(Context context){
+    public CallAPILogin(Context context){
         super(context, ApiUrl.getUserLoginRoute());
     }
 

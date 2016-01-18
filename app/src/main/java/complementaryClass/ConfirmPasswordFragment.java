@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.michel.adrien.projectpostit.R;
 
-import callAPI.CallAPISignUpa;
+import callAPI.CallAPISignUp;
 
 public class ConfirmPasswordFragment extends DialogFragment {
 
@@ -57,7 +57,7 @@ public class ConfirmPasswordFragment extends DialogFragment {
                             toast.show();
 
                             Log.i("api", "We are about to start the CallAPISignUp");
-                            new CallAPISignUpa(getActivity().getBaseContext()).execute("username", getArguments().getString(argumentusername),
+                            new CallAPISignUp(getActivity().getBaseContext()).execute("username", getArguments().getString(argumentusername),
                                     "password", getArguments().getString(argumentPassword), "email", getArguments().getString(argumentMail));
                         }
                         else {

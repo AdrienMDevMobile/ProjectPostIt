@@ -17,7 +17,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import org.json.JSONArray;
 
-import callAPI.CallAPIBoardLista;
+import callAPI.CallAPIBoardList;
 import complementaryClass.DrawerReadera;
 
 public class MainActivity extends AppCompatActivity  {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity  {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String boardList = getIntent().getStringExtra(CallAPIBoardLista.INTENT_EXTRA_BOARDS);
+        String boardList = getIntent().getStringExtra(CallAPIBoardList.INTENT_EXTRA_BOARDS);
 
         PrimaryDrawerItem listDrawerItem[] = new PrimaryDrawerItem[0];
 

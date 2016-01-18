@@ -12,11 +12,11 @@ import settings.ApiUrl;
 /**
  * Created by Adrien on 30/12/2015.
  */
-public class CallAPIBoardLista extends CallAPIGETa {
+public class CallAPIBoardList extends CallAPIGET {
 
     public final static String INTENT_EXTRA_BOARDS = "extraBoards";
 
-    public CallAPIBoardLista(Context context, String userId) throws NotLoggedInException {
+    public CallAPIBoardList(Context context, String userId) throws NotLoggedInException {
         super(context, ApiUrl.getUserBoardsRoute(context, userId));
     }
 
