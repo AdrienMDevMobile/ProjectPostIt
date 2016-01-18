@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
 
-import exceptions.NotLoggedInExceptiona;
+import exceptions.NotLoggedInException;
 import settings.ApiUrl;
 
 /**
@@ -14,7 +14,7 @@ public class callAPIBoardListTest extends callAPIGET {
 
     TextView textView;
 
-    public callAPIBoardListTest(Context context, TextView textView, String userId) throws NotLoggedInExceptiona {
+    public callAPIBoardListTest(Context context, TextView textView, String userId) throws NotLoggedInException {
         super(context, ApiUrl.getUserBoardsRoute(context, userId));
         this.textView = textView;
     }

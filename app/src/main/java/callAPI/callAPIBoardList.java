@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.michel.adrien.projectpostit.MainActivity;
 
-import exceptions.NotLoggedInExceptiona;
+import exceptions.NotLoggedInException;
 import settings.ApiUrl;
 
 /**
@@ -16,7 +16,7 @@ public class callAPIBoardList extends callAPIGET {
 
     public final static String INTENT_EXTRA_BOARDS = "extraBoards";
 
-    public callAPIBoardList(Context context, String userId) throws NotLoggedInExceptiona {
+    public callAPIBoardList(Context context, String userId) throws NotLoggedInException {
         super(context, ApiUrl.getUserBoardsRoute(context, userId));
     }
 

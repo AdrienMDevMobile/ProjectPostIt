@@ -32,7 +32,7 @@ public class DrawerReadera {
     public static boolean onAddBoardClick(Context context, FragmentManager fragmentManager){
         Toast.makeText(context, "youpi", Toast.LENGTH_SHORT).show();
         Log.i("fragmentAddBoard", "avantLeShow");
-        new CreateBoardFragmenta().show(fragmentManager, "");
+        new CreateBoardFragment().show(fragmentManager, "");
         Log.i("fragmentAddBoard", "apresLeShow");
         return false;
     }

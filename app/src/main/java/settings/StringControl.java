@@ -11,23 +11,23 @@ import com.michel.adrien.projectpostit.R;
  * Also there are the booleans functions that checks if the lengths are respected.
  * A toast is shown if not.
  */
-public abstract class StringControla {
+public abstract class StringControl {
 
     private static int duration = Toast.LENGTH_SHORT;
 
     //------------------------------BOOLEAN CONTROL FUNCTIONS------------------------------
     public static boolean checkUsernameLength(Context context, String username){
-        if (username.length() < StringControla.getMinLengthUsername()) {
+        if (username.length() < StringControl.getMinLengthUsername()) {
             Log.i("l", "trop court");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.username_too_short) + StringControla.getMinLengthUsername(), duration);
+                    context.getString(R.string.username_too_short) + StringControl.getMinLengthUsername(), duration);
             toast.show();
             return false;
         }
-        if (username.length() > StringControla.getMaxLengthUsername()) {
+        if (username.length() > StringControl.getMaxLengthUsername()) {
             Log.i("l", "trop long");
             Toast toast = Toast.makeText(context,
-                   context.getString(R.string.username_too_long) + StringControla.getMaxLengthUsername(), duration);
+                   context.getString(R.string.username_too_long) + StringControl.getMaxLengthUsername(), duration);
             toast.show();
             return false;
         }
@@ -35,17 +35,17 @@ public abstract class StringControla {
     }
 
     public static boolean checkPasswordLength(Context context, String password){
-        if (password.length() < StringControla.getMinLengthPassword()) {
+        if (password.length() < StringControl.getMinLengthPassword()) {
             Log.i("p", "trop court");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.password_too_short) + StringControla.getMinLengthPassword() , duration);
+                    context.getString(R.string.password_too_short) + StringControl.getMinLengthPassword() , duration);
             toast.show();
             return false;
         }
-        if (password.length() > StringControla.getMaxLengthPassword()) {
+        if (password.length() > StringControl.getMaxLengthPassword()) {
             Log.i("p", "trop long");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.password_too_long) + StringControla.getMaxLengthPassword(), duration);
+                    context.getString(R.string.password_too_long) + StringControl.getMaxLengthPassword(), duration);
             toast.show();
             return false;
         }
@@ -53,17 +53,17 @@ public abstract class StringControla {
     }
 
     public static boolean checkEmailLength(Context context, String email){
-        if (email.length() < StringControla.getMinLengthEmail()) {
+        if (email.length() < StringControl.getMinLengthEmail()) {
             Log.i("m", "trop court");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.email_too_short) + StringControla.getMinLengthEmail(), duration);
+                    context.getString(R.string.email_too_short) + StringControl.getMinLengthEmail(), duration);
             toast.show();
             return false;
         }
-        if (email.length() > StringControla.getMaxLengthEmail()) {
+        if (email.length() > StringControl.getMaxLengthEmail()) {
             Log.i("m", "trop long");
             Toast toast = Toast.makeText(context,
-                    context.getString(R.string.email_too_long) + StringControla.getMaxLengthEmail(), duration);
+                    context.getString(R.string.email_too_long) + StringControl.getMaxLengthEmail(), duration);
             toast.show();
             return false;
         }

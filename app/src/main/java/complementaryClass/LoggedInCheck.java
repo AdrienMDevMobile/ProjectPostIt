@@ -6,12 +6,12 @@ import android.util.Log;
 
 import com.michel.adrien.projectpostit.R;
 
-import exceptions.NotLoggedInExceptiona;
+import exceptions.NotLoggedInException;
 
 /**
  * Created by Adrien on 27/12/2015.
  */
-public abstract class LoggedInChecka {
+public abstract class LoggedInCheck {
 
     /*
     Private function that gives the value of the value in the SharedReferences. Is used for other functions of the class.
@@ -45,19 +45,19 @@ public abstract class LoggedInChecka {
     /*
     Return the value of the session token. Throws an exception if the user is not logged in.
      */
-    static public String getLogInToken(Context context) throws NotLoggedInExceptiona {
+    static public String getLogInToken(Context context) throws NotLoggedInException {
         Log.i("t", "Nous rentrons dans is getLogInToken");
-        if (!LoggedInChecka.isLoggedIn(context)) {
-            throw new NotLoggedInExceptiona();
+        if (!LoggedInCheck.isLoggedIn(context)) {
+            throw new NotLoggedInException();
         }
         Log.i("t", "Nous sortons de isLoggedIn");
         return getSharedReferencesValue(context, context.getString(R.string.sharedPreferences_values_session_token));
     }
 
-    static public String getLogInUserId(Context context) throws NotLoggedInExceptiona {
+    static public String getLogInUserId(Context context) throws NotLoggedInException {
         Log.i("t", "Nous rentrons dans is getLogInUserId");
-        if (!LoggedInChecka.isLoggedIn(context)) {
-            throw new NotLoggedInExceptiona();
+        if (!LoggedInCheck.isLoggedIn(context)) {
+            throw new NotLoggedInException();
         }
         Log.i("t", "Nous sortons de getLogInUserId");
         return getSharedReferencesValue(context, context.getString(R.string.sharedPreferences_values_user_id));

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
 import callAPI.callAPIBoardList;
-import complementaryClass.LoggedInChecka;
-import exceptions.NotLoggedInExceptiona;
+import complementaryClass.LoggedInCheck;
+import exceptions.NotLoggedInException;
 
 /*
 Loading activities asks for the Boards lists and when it receives them, it opens MainActivity.
@@ -22,9 +22,9 @@ public class LoadingActivity extends ActionBarActivity {
         TODO : make an intent to login Activity if the user is not logged in.
          */
         try {
-            new callAPIBoardList(getBaseContext(), null).execute("access_token", LoggedInChecka.getLogInToken(getBaseContext()));
+            new callAPIBoardList(getBaseContext(), null).execute("access_token", LoggedInCheck.getLogInToken(getBaseContext()));
         }
-        catch (NotLoggedInExceptiona e){
+        catch (NotLoggedInException e){
             Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
             startActivity(intent);
         }

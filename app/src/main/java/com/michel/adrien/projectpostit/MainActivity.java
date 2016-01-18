@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         //The class delegate the click handle to the DrawerReadera class.
-                        //new CreateBoardFragmenta().show(getSupportFragmentManager(), "");
+                        //new CreateBoardFragment().show(getSupportFragmentManager(), "");
                         return DrawerReadera.onDrawerClick(getBaseContext(), getSupportFragmentManager(), view, position, drawerItem);
                     }
                 }).build();
