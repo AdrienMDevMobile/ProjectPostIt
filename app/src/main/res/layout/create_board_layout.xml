@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/etBoardName"
+        android:ems="10"
+        android:id="@+id/create_board_etBoardName"
+        android:layout_marginTop="73dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbIsPublic"
+        android:id="@+id/create_board_activity_cbIsPublic"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@+id/create_board_etBoardName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp" />
+
+
+</LinearLayout>

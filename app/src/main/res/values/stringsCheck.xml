@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Strings to check values before sending a request -->
     <string name="username_too_short">username too short. Min length : </string>
     <string name="username_too_long">username too long. Max length : </string>
 

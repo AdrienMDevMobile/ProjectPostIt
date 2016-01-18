@@ -9,17 +9,16 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 
 import org.json.JSONArray;
 
 import callAPI.callAPIBoardList;
+import complementaryClass.DrawerReadera;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -80,16 +79,14 @@ public class MainActivity extends AppCompatActivity  {
         sideMenu = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
-               // .inflateMenu(R.menu.example_menu)
                 .addDrawerItems(listDrawerItem)
+               .inflateMenu(R.menu.additional_board_menu)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem instanceof Nameable) {
-                            Toast.makeText(MainActivity.this, ((Nameable) drawerItem).getName().getText(MainActivity.this), Toast.LENGTH_SHORT).show();
-                        }
-
-                        return false;
+                        //The class delegate the click handle to the DrawerReadera class.
+                        //new CreateBoardFragment().show(getSupportFragmentManager(), "");
+                        return DrawerReadera.onDrawerClick(getBaseContext(), getSupportFragmentManager(), view, position, drawerItem);
                     }
                 }).build();
 

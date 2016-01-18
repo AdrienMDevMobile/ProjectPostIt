@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Handles the string for the Account and for the boards of the account -->
 <resources>
     <string name="signUp_successful">You sucessfully signed up</string>
     <string name="logIn_successful">You sucessfully logged In</string>
@@ -11,5 +12,11 @@
     <string name="json_problem_toast"> Problem with the JSON object</string>
 
     <string name="loading_boards">Loading boards, please wait.</string>
+
+    <!-- Boards, addition, removal -->
+    <string name="board">Board</string>
+    <string name="add_board">Add board</string>
+    <string name="etBoardName">Name of the board</string>
+    <string name="cbIsPublic">The board is public</string>
 
 </resources>

@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import callAPI.callAPILogin;
-import complementaryClass.loggedInCheck;
-import settings.stringControl;
+import complementaryClass.LoggedInChecka;
+import settings.StringControla;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -18,7 +18,7 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Redirect if the user is loggedIn
         Intent intentIfLoggedIn = new Intent(LoginActivity.this, LoadingActivity.class);
-        if(loggedInCheck.isLoggedIn(getBaseContext())){
+        if(LoggedInChecka.isLoggedIn(getBaseContext())){
             startActivity(intentIfLoggedIn);
         }
 
@@ -39,8 +39,8 @@ public class LoginActivity extends ActionBarActivity {
 
                 /* After getting all the informations from the user we check their length.
                 If they are good, we show the confirm password fragment */
-                if (stringControl.checkUsernameLength(getBaseContext(), username) &&
-                        stringControl.checkPasswordLength(getBaseContext(), password)) {
+                if (StringControla.checkUsernameLength(getBaseContext(), username) &&
+                        StringControla.checkPasswordLength(getBaseContext(), password)) {
 
                     //Call of the API
                     new callAPILogin(getBaseContext()).execute("username", username, "password", password);

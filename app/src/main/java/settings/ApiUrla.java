@@ -2,13 +2,13 @@ package settings;
 
 import android.content.Context;
 
-import complementaryClass.loggedInCheck;
-import exceptions.notLoggedInException;
+import complementaryClass.LoggedInChecka;
+import exceptions.NotLoggedInExceptiona;
 
 /**
  * Created by Adrien on 15/11/2015.
  */
-public abstract class apiUrl {
+public abstract class ApiUrla {
     public static String getDatabaseUrl() {
         return databaseUrl;
     }
@@ -22,14 +22,14 @@ public abstract class apiUrl {
     public static String getUserRegisterRoute(){ return getUserRoute(); }
     public static String getUserLoginRoute(){ return getUserRoute() + "login"; }
 
-    public static String getSelectedUseRoute(Context context, String userId) throws notLoggedInException {
+    public static String getSelectedUseRoute(Context context, String userId) throws NotLoggedInExceptiona {
         /*IF no user is given, we take the user that is currently connected */
         if(userId==null){
-                userId = loggedInCheck.getLogInUserId(context);
+                userId = LoggedInChecka.getLogInUserId(context);
         }
         return getUserRoute()  + userId + "/";
     }
-    public static String getUserBoardsRoute(Context context, String userId)  throws notLoggedInException{
+    public static String getUserBoardsRoute(Context context, String userId)  throws NotLoggedInExceptiona {
         return getSelectedUseRoute(context, userId) + "boards/";
     }
 

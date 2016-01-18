@@ -13,7 +13,7 @@ import com.michel.adrien.projectpostit.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import settings.apiUrl;
+import settings.ApiUrla;
 
 /**
  * Created by Adrien on 27/12/2015.
@@ -21,7 +21,7 @@ import settings.apiUrl;
 public class callAPILogin extends callAPIPOST {
 
     public callAPILogin(Context context){
-        super(context, apiUrl.getUserLoginRoute());
+        super(context, ApiUrla.getUserLoginRoute());
     }
 
     @Override

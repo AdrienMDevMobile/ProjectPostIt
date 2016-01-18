@@ -14,14 +14,14 @@ import com.michel.adrien.projectpostit.R;
 
 import callAPI.callAPISignUp;
 
-public class confirmPasswordFragment extends DialogFragment {
+public class ConfirmPasswordFragmenta extends DialogFragment {
 
     public static String argumentPassword = "password";
     public static String argumentusername = "username";
     public static String argumentMail = "mail";
 
-    public static confirmPasswordFragment newInstance(String username, String mail, String password) {
-        confirmPasswordFragment confirmPasswordFragment = new confirmPasswordFragment();
+    public static ConfirmPasswordFragmenta newInstance(String username, String mail, String password) {
+        ConfirmPasswordFragmenta confirmPasswordFragment = new ConfirmPasswordFragmenta();
 
         Bundle args = new Bundle();
         args.putString(argumentPassword, password);

@@ -10,9 +10,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import complementaryClass.confirmPasswordFragment;
-import complementaryClass.loggedInCheck;
-import settings.stringControl;
+import complementaryClass.ConfirmPasswordFragmenta;
+import complementaryClass.LoggedInChecka;
+import settings.StringControla;
 
 
 public class SignUpActivity extends ActionBarActivity {
@@ -22,7 +22,7 @@ public class SignUpActivity extends ActionBarActivity {
 
         //Redirect if the user is loggedIn
         Intent intentIfLoggedIn = new Intent(SignUpActivity.this, LoadingActivity.class);
-        if(loggedInCheck.isLoggedIn(getBaseContext())){
+        if(LoggedInChecka.isLoggedIn(getBaseContext())){
             startActivity(intentIfLoggedIn);
         }
 
@@ -43,13 +43,13 @@ public class SignUpActivity extends ActionBarActivity {
                 String email = ((EditText) findViewById(R.id.sign_up_activity_etEmail)).getText().toString();
                 /* After getting all the informations from the user we check their length.
                 If they are good, we show the confirm password fragment */
-                if (stringControl.checkUsernameLength(getBaseContext(), username) &&
-                        stringControl.checkEmailLength(getBaseContext(), email) &&
-                        stringControl.checkPasswordLength(getBaseContext(), password) &&
-                         stringControl.is_Valid_Email(getBaseContext(), email))
+                if (StringControla.checkUsernameLength(getBaseContext(), username) &&
+                        StringControla.checkEmailLength(getBaseContext(), email) &&
+                        StringControla.checkPasswordLength(getBaseContext(), password) &&
+                         StringControla.is_Valid_Email(getBaseContext(), email))
                 {
 
-                    DialogFragment confirmPasswordDialog = confirmPasswordFragment.newInstance(username, email, password);
+                    DialogFragment confirmPasswordDialog = ConfirmPasswordFragmenta.newInstance(username, email, password);
                     confirmPasswordDialog.show(getSupportFragmentManager(), "");
                 }
             }
