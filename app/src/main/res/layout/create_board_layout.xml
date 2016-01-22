@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="354dp"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="@string/etBoardName"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="@string/cbIsPublic"
         android:id="@+id/create_board_activity_cbIsPublic"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center_horizontal"
         android:layout_below="@+id/create_board_etBoardName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp" />

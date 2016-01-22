@@ -13,6 +13,8 @@
 
     <string name="loading_boards">Loading boards, please wait.</string>
 
+    <string name="please_login">You are not logged In.\nPlease login.</string>
+
     <!-- Boards, addition, removal -->
     <string name="board">Board</string>
     <string name="add_board">Add board</string>

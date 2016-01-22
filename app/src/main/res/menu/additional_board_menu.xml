@@ -10,6 +10,7 @@
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" /> -->
         <item
+            android:icon="@drawable/ic_add_board"
             android:id="@+id/additional_board_menu_btn_addBoard"
             android:title="@string/add_board"
             app:showAsAction="never" />

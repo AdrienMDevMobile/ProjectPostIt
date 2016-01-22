@@ -9,15 +9,16 @@ import com.michel.adrien.projectpostit.MainActivity;
 import exceptions.NotLoggedInException;
 import settings.ApiUrl;
 
-/**
- * Created by Adrien on 30/12/2015.
+/*
+    Load the board list for the side menu of the main activity.
+    The callAPI is sended by Loading activity and it creates an intent toward Main activity
  */
 public class CallAPIBoardList extends CallAPIGET {
 
     public final static String INTENT_EXTRA_BOARDS = "extraBoards";
 
-    public CallAPIBoardList(Context context, String userId) throws NotLoggedInException {
-        super(context, ApiUrl.getUserBoardsRoute(context, userId));
+    public CallAPIBoardList(Context context, String userId, String idToken) throws NotLoggedInException {
+        super(context, ApiUrl.getUserBoardsRoute(context, userId, idToken));
     }
 
 

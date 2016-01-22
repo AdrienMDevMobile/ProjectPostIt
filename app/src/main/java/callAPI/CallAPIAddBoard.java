@@ -5,23 +5,27 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.michel.adrien.projectpostit.LoginActivity;
+import com.michel.adrien.projectpostit.LoadingActivity;
 import com.michel.adrien.projectpostit.R;
 
 import org.json.JSONObject;
 
+import exceptions.NotLoggedInException;
 import settings.ApiUrl;
 
-public class CallAPISignUp extends CallAPIPOST {
+/*
+    APIcall to create a new board for the user currently connected.
+    Sended by the add board button from the side menu of the main activity.
+ */
+public class CallAPIAddBoard extends CallAPIPOST {
 
-    public CallAPISignUp(Context context){
-        super(context, ApiUrl.getUserRegisterRoute());
+    public CallAPIAddBoard(Context context, String userId, String IdToken) throws NotLoggedInException {
+        super(context, ApiUrl.getUserBoardsRoute(context, userId, IdToken));
     }
 
-    protected void onPostExecute(String result) {
-
+    public void onPostExecute(String result){
         Intent intent = null;
-
+        //Si ca marche : faire un intent ver Loading activity.
         try {
             JSONObject json = new JSONObject(result);
             if(! json.isNull("error")){
@@ -29,12 +33,10 @@ public class CallAPISignUp extends CallAPIPOST {
             }
             else {
                 String successful = getContext().getResources().getString(R.string.signUp_successful);
-                String username = getContext().getResources().getString(R.string.username) + " " + json.getString("username");
-                String email = getContext().getResources().getString(R.string.email) + " " + json.getString("username");
 
-                result = successful + " " + username + " " + email;
+                //Donner valeur a result
 
-                intent = new Intent(getContext(), LoginActivity.class);
+                intent = new Intent(getContext(), LoadingActivity.class);
             }
         }
         catch (Throwable t) {
@@ -42,10 +44,10 @@ public class CallAPISignUp extends CallAPIPOST {
             Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
         }
 
-        CharSequence text = result;
-        Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), result, Toast.LENGTH_LONG).show();
 
         if(intent != null){
+            Log.i("AddBoard", "nous lancons l intent");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getContext().startActivity(intent);
         }

@@ -66,7 +66,6 @@ request is a HttpGet for the APIGet subclass. A HttpPost for the APIPost subclas
 
         try {
             httpclient = new DefaultHttpClient();
-            Log.i("URL", params[0]);
 
             //If Post request, we add the parameters to the entity
             if(request.getClass() == HttpPost.class){

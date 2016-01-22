@@ -15,19 +15,15 @@ import org.json.JSONObject;
 
 import settings.ApiUrl;
 
-/**
- * Created by Adrien on 27/12/2015.
+/*
+    CallAPI to log in the user.
+    Sended by login activity.
+    It then redirects to loading activites to get the board list.
  */
 public class CallAPILogin extends CallAPIPOST {
 
     public CallAPILogin(Context context){
         super(context, ApiUrl.getUserLoginRoute());
-    }
-
-    @Override
-    protected String doInBackground(String... params) {
-
-        return super.doInBackground(params);
     }
 
     protected void onPostExecute(String result) {
