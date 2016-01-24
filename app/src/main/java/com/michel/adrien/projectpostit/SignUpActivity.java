@@ -4,18 +4,20 @@ package com.michel.adrien.projectpostit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import complementaryClass.ConfirmPasswordFragment;
+import fragment.ConfirmPasswordFragment;
 import complementaryClass.LoggedInCheck;
 import settings.StringControl;
 
-
-public class SignUpActivity extends ActionBarActivity {
+/*
+    Activity to sign up the user. Uses CallAPISignUp
+ */
+public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

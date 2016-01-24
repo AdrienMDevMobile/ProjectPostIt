@@ -10,7 +10,7 @@ import com.michel.adrien.projectpostit.R;
 
 import org.json.JSONObject;
 
-import exceptions.NotLoggedInException;
+import exception.NotLoggedInException;
 import settings.ApiUrl;
 
 /*

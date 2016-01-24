@@ -6,10 +6,11 @@ import android.util.Log;
 
 import callAPI.CallAPIBoardList;
 import complementaryClass.LoggedInCheck;
-import exceptions.NotLoggedInException;
+import exception.NotLoggedInException;
 
 /*
-Loading activities asks for the Boards lists and when it receives them, it opens MainActivity.
+Loading activities asks for the Boards lists with CallAPIBoardList and when it receives them,
+it opens MainActivity.
  */
 public class LoadingActivity extends AppCompatActivity {
 

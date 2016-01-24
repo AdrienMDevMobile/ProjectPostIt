@@ -9,6 +9,7 @@ import com.michel.adrien.projectpostit.R;
 /**
  * Contains the variable of the size limitations and their getter
  * Also there are the booleans functions that checks if the lengths are respected.
+ * It also checks the structure of the mail adress (X@Y.Z)
  * A toast is shown if not.
  */
 public abstract class StringControl {

@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.michel.adrien.projectpostit.MainActivity;
 
-import exceptions.NotLoggedInException;
+import exception.NotLoggedInException;
 import settings.ApiUrl;
 
 /*

@@ -1,4 +1,4 @@
-package complementaryClass;
+package fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -14,18 +14,22 @@ import com.michel.adrien.projectpostit.R;
 
 import callAPI.CallAPISignUp;
 
+/*
+    Frament that appears before the sign up of the user. It asks to confirm the password.
+    If the password confirmed is right, it sends a callAPISignup.
+ */
 public class ConfirmPasswordFragment extends DialogFragment {
 
-    public static String argumentPassword = "password";
-    public static String argumentusername = "username";
-    public static String argumentMail = "mail";
+    private static String argumentPassword = "password";
+    private static String argumentUsername = "username";
+    private static String argumentMail = "mail";
 
     public static ConfirmPasswordFragment newInstance(String username, String mail, String password) {
         ConfirmPasswordFragment confirmPasswordFragment = new ConfirmPasswordFragment();
 
         Bundle args = new Bundle();
         args.putString(argumentPassword, password);
-        args.putString(argumentusername, username);
+        args.putString(argumentUsername, username);
         args.putString(argumentMail, mail);
 
         confirmPasswordFragment.setArguments(args);
@@ -57,7 +61,7 @@ public class ConfirmPasswordFragment extends DialogFragment {
                             toast.show();
 
                             Log.i("api", "We are about to start the CallAPISignUp");
-                            new CallAPISignUp(getActivity().getBaseContext()).execute("username", getArguments().getString(argumentusername),
+                            new CallAPISignUp(getActivity().getBaseContext()).execute("username", getArguments().getString(argumentUsername),
                                     "password", getArguments().getString(argumentPassword), "email", getArguments().getString(argumentMail));
                         }
                         else {

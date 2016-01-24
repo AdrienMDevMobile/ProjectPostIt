@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_user"
+        android:id="@+id/setting_board_btnAddUser"
+        android:layout_gravity="right"
+        android:layout_alignBottom="@+id/setting_board_etAddUser"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/username"
+        android:ems="10"
+        android:id="@+id/setting_board_etAddUser"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/setting_board_btnAddUser"
+        android:layout_toLeftOf="@+id/setting_board_btnAddUser" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbIsPublic"
+        android:id="@+id/setting_board_cbIsPublic"
+        android:layout_below="@+id/setting_board_etAddUser"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_board"
+        android:id="@+id/setting_board_btnDeleteBoard"
+        android:layout_below="@+id/setting_board_cbIsPublic"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="30dp"/>
+
+</RelativeLayout>

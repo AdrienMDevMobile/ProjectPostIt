@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -18,20 +18,51 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import org.json.JSONArray;
 
 import callAPI.CallAPIBoardList;
-import complementaryClass.DrawerReadera;
+import complementaryClass.ActiveBoardInfo;
+import complementaryClass.DrawerReader;
+import fragment.SettingBoardFragment;
 
-public class MainActivity extends AppCompatActivity  {
+/*
+    Main activity.
+    Has a side menu with the board list.
+ */
+public class MainActivity extends AppCompatActivity {
 
 
     private Drawer sideMenu = null;
+    private JSONArray jsonReader;
+    Toolbar toolbar;
+    //Remember the Id of the active board.
+    private ActiveBoardInfo activeBoardInfo = new ActiveBoardInfo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
+            Load the settings button
+         */
+        Button settings = (Button) findViewById(R.id.main_activity_btnSetting);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(activeBoardInfo.getActiveBoardId() != "") {
+                    SettingBoardFragment settingBoardFragment = SettingBoardFragment.newInstance(activeBoardInfo);
+                    settingBoardFragment.show(getSupportFragmentManager(), "");
+                }
+                else{
+                    Toast.makeText(getBaseContext(), R.string.please_select_board, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
-        Button logout = (Button)findViewById(R.id.main_activity_btnLogOut);
+
+
+        /*
+            LOGOUT
+         */
+        Button logout = (Button) findViewById(R.id.main_activity_btnLogOut);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,69 +81,44 @@ public class MainActivity extends AppCompatActivity  {
 
 
         // Handle Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String boardList = getIntent().getStringExtra(CallAPIBoardList.INTENT_EXTRA_BOARDS);
-
-        PrimaryDrawerItem listDrawerItem[] = new PrimaryDrawerItem[0];
-
         /*
-        TODO : changer le catch
+            USE THE ANSWER OF THE SERVER TO MAKE THE BOARD LIST
          */
+        String boardList = getIntent().getStringExtra(CallAPIBoardList.INTENT_EXTRA_BOARDS);
+        PrimaryDrawerItem listDrawerItem[] = new PrimaryDrawerItem[0];
         try {
-            JSONArray jsonReader = new JSONArray(boardList);
+            jsonReader = new JSONArray(boardList);
             listDrawerItem = new PrimaryDrawerItem[jsonReader.length()];
 
-            for(int compteur=0; compteur<jsonReader.length(); compteur++){
-                Log.i("json", jsonReader.getJSONObject(compteur).getString("name"));
-                listDrawerItem[compteur] = new PrimaryDrawerItem().withName(jsonReader.getJSONObject(compteur).getString("name"));
+            for (int compteur = 0; compteur < jsonReader.length(); compteur++) {
+                Log.i("json", jsonReader.getJSONObject(compteur).getString(getString(R.string.json_boardlist_board_name)));
+                listDrawerItem[compteur] = new PrimaryDrawerItem().withName(jsonReader.getJSONObject(compteur).getString(getString(R.string.json_boardlist_board_name)));
             }
 
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             Log.e("mainActi", "error in main activity");
-            Log.i("mainActi", e.getMessage().toString());
+            Log.e("mainActi", e.getMessage().toString());
+            Toast.makeText(getBaseContext(), getString(R.string.exception_main_activity), Toast.LENGTH_LONG);
         }
-
-        //Create the drawer
+        /*
+            CREATE THE SIDE MENU
+         */
         sideMenu = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .addDrawerItems(listDrawerItem)
-               .inflateMenu(R.menu.additional_board_menu)
+                .inflateMenu(R.menu.main_activity_side_menu)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        //The class delegate the click handle to the DrawerReadera class.
-                        //new CreateBoardFragment().show(getSupportFragmentManager(), "");
-                        return DrawerReadera.onDrawerClick(getBaseContext(), getSupportFragmentManager(), view, position, drawerItem);
+                        //The class delegate the click handle to the DrawerReader class.
+                        return DrawerReader.onDrawerClick(getBaseContext(), view, position,
+                                getSupportFragmentManager(), drawerItem, jsonReader, toolbar, activeBoardInfo);
                     }
                 }).build();
-
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // getSupportActionBar().setHomeButtonEnabled(false);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        //handle the back press :D close the drawer first and if the drawer is closed close the activity
-        if (sideMenu != null && sideMenu.isDrawerOpen()) {
-            sideMenu.closeDrawer();
-        } else {
-            super.onBackPressed();
-        }
-    }
 }

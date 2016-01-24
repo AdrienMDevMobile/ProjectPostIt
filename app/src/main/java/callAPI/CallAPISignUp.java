@@ -12,6 +12,11 @@ import org.json.JSONObject;
 
 import settings.ApiUrl;
 
+/*
+    callAPI to sign up the user.
+    It is called by Sign up activity
+    It redirects to login activity is the registration is successfull.
+ */
 public class CallAPISignUp extends CallAPIPOST {
 
     public CallAPISignUp(Context context){
@@ -24,8 +29,9 @@ public class CallAPISignUp extends CallAPIPOST {
 
         try {
             JSONObject json = new JSONObject(result);
-            if(! json.isNull("error")){
-                result = json.getJSONObject("error").getString("message");
+            if(! json.isNull(getContext().getString(R.string.json_answer_error))){
+                result = json.getJSONObject(getContext().getString(R.string.json_answer_error))
+                        .getString(getContext().getString(R.string.json_answer_error_message));
             }
             else {
                 String successful = getContext().getResources().getString(R.string.signUp_successful);

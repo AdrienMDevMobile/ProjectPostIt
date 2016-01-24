@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- String that holds the name of the differents parts of the answer sended by the server -->
+    <string name="json_boardlist_board_name">name</string>
+    <string name="json_boardlist_board_id">id</string>
+    <string name="json_user_id">id</string>
+    <string name="json_answer_error">error</string>
+    <string name="json_answer_error_message">message</string>
+
+</resources>

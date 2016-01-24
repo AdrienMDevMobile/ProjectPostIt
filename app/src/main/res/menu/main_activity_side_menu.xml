@@ -14,5 +14,10 @@
             android:id="@+id/additional_board_menu_btn_addBoard"
             android:title="@string/add_board"
             app:showAsAction="never" />
+        <item
+            android:icon="@drawable/ic_log_out"
+            android:id="@+id/additional_board_menu_btn_logOut"
+            android:title="@string/logout"
+            app:showAsAction="never" />
     </group>
 </menu>

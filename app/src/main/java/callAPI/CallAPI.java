@@ -19,10 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-doInBackground and params table.
+Origin class of all the callAPI.
+            callAPI
+         |             |
+       callAPIGet   callAPIPOST
+         |             |
+     other get API  other post API
 
-The first String in params is the adress. It is determined by the subclass.
-Then : odd : name of the value, even : value
+Then : even : name of the value, odd : value
  */
 public abstract class CallAPI extends AsyncTask<String, String, String> {
 
@@ -113,7 +117,7 @@ request is a HttpGet for the APIGet subclass. A HttpPost for the APIPost subclas
             nouvParams[0] = url;
 
             for (int compter = 0; compter < params.length; compter++) {
-                Log.e("addUrl", "a");
+                Log.i("addUrl", "a");
                 nouvParams[compter + 1] = params[compter];
             }
             return nouvParams;

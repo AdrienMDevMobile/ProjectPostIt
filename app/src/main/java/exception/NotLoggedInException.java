@@ -1,4 +1,4 @@
-package exceptions;
+package exception;
 
 import android.content.Context;
 import android.content.Intent;

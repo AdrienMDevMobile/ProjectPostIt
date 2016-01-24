@@ -3,15 +3,15 @@
     <!-- Activity names -->
     <string name="app_name">ProjectPostIt</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_logged_in">LoggedInActivity</string>
     <string name="title_activity_loading">LoadingActivity</string>
     <string name="title_activity_test_drawer_builder">testDrawerBuilder</string>
     <string name="title_activity_creating_board">CreatingBoardActivity</string>
+
+    <!-- Bug toasts -->
+    <string name="exception_main_activity">There was an error in the loading.</string>
+    <string name="exception_json">We are sorry, we had a problem with the JSON object.</string>
 
 
 

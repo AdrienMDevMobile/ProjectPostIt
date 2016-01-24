@@ -1,4 +1,4 @@
-package complementaryClass;
+package fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,8 +13,13 @@ import android.widget.EditText;
 import com.michel.adrien.projectpostit.R;
 
 import callAPI.CallAPIAddBoard;
-import exceptions.NotLoggedInException;
+import complementaryClass.LoggedInCheck;
+import exception.NotLoggedInException;
 
+/*
+    Fragment that appears in main activity when the user clicks on addBoard button.
+    The fragment makes a callAPIAddBoard call.
+ */
 public class CreateBoardFragment extends DialogFragment {
 
     @Override @NonNull

@@ -6,10 +6,10 @@ import android.util.Log;
 
 import com.michel.adrien.projectpostit.R;
 
-import exceptions.NotLoggedInException;
+import exception.NotLoggedInException;
 
-/**
- * Created by Adrien on 27/12/2015.
+/*
+    Abstract class used to check if the user is logged in, and if that is the case, get user informations.
  */
 public abstract class LoggedInCheck {
 
