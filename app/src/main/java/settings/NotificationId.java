@@ -5,7 +5,7 @@ package settings;
     Saving the ids means that if two notifications identical are send, Android will update the last one
     instead of creating a new one.
  */
-public abstract class NotificationIda {
+public abstract class NotificationId {
     private static final  int  ADD_USER_TO_BOARD_ID = 1;
 
     public static int getAddUserToBoardId(){
