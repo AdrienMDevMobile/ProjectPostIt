@@ -11,16 +11,18 @@ import android.widget.EditText;
 
 import com.michel.adrien.projectpostit.R;
 
-import callAPI.CallAPIAddUserToBoarda;
+import callAPI.CallAPIAddUserToBoard;
 import complementaryClass.ActiveBoardInfo;
 
-/**
- * Created by Adrien on 23/01/2016.
+/*
+    Fragment where the user can change the settings of the board
+    Opened in main activity.
  */
 public class SettingBoardFragment extends DialogFragment{
 
     private static String argumentActiveBoardId = "activeBoardId";
     public View view;
+    //The id of the notification is stored here. If multiple
 
     public static SettingBoardFragment newInstance(ActiveBoardInfo activeBoardInfo){
         SettingBoardFragment settingBoardFragment = new SettingBoardFragment();
@@ -41,8 +43,10 @@ public class SettingBoardFragment extends DialogFragment{
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String  username = ((EditText)view.findViewById(R.id.setting_board_etAddUser)).getText().toString();
-                new CallAPIAddUserToBoarda(getView().getContext(), getArguments().getString(argumentActiveBoardId), username).execute();
+                EditText ETUserName = (EditText)view.findViewById(R.id.setting_board_etAddUser);
+                String  username = ETUserName.getText().toString();
+                new CallAPIAddUserToBoard(getView().getContext(), getArguments().getString(argumentActiveBoardId), username).execute();
+                ETUserName.setText("");
             }
         });
         return view;
