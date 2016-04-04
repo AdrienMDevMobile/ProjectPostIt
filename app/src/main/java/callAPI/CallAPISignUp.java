@@ -29,14 +29,14 @@ public class CallAPISignUp extends CallAPIPOST {
 
         try {
             JSONObject json = new JSONObject(result);
-            if(! json.isNull(getContext().getString(R.string.json_answer_error))){
+            if(! json.isNull(getContext().getString(R.string.json_answer_error)) || ! json.getBoolean(getContext().getString(R.string.json_response_servor))){
                 result = json.getJSONObject(getContext().getString(R.string.json_answer_error))
                         .getString(getContext().getString(R.string.json_answer_error_message));
             }
             else {
                 String successful = getContext().getResources().getString(R.string.signUp_successful);
                 String username = getContext().getResources().getString(R.string.username) + " " + json.getString("username");
-                String email = getContext().getResources().getString(R.string.email) + " " + json.getString("username");
+                String email = getContext().getResources().getString(R.string.email) + " " + json.getString("email");
 
                 result = successful + " " + username + " " + email;
 

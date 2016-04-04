@@ -28,7 +28,7 @@ import fragment.SettingBoardFragment;
  */
 public class MainActivity extends AppCompatActivity {
 
-
+//TODO Toutes les views du board doivent etre enregistré dans une table
     private Drawer sideMenu = null;
     private JSONArray jsonReader;
     Toolbar toolbar;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(activeBoardInfo.getActiveBoardId() != "") {
+                if(! activeBoardInfo.getActiveBoardId().equals("")) {
                     SettingBoardFragment settingBoardFragment = SettingBoardFragment.newInstance(activeBoardInfo);
                     settingBoardFragment.show(getSupportFragmentManager(), "");
                 }
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             Log.e("mainActi", "error in main activity");
-            Log.e("mainActi", e.getMessage().toString());
+            Log.e("mainActi", e.getMessage());
             Toast.makeText(getBaseContext(), getString(R.string.exception_main_activity), Toast.LENGTH_LONG);
         }
         /*
@@ -119,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
                                 getSupportFragmentManager(), drawerItem, jsonReader, toolbar, activeBoardInfo);
                     }
                 }).build();
+
+       /* TextView tv= new TextView(getBaseContext());
+        tv.setText("test");
+        addContentView(tv, new ActionBar.LayoutParams()); */
     }
 
 }

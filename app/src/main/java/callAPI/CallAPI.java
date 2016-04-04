@@ -4,30 +4,114 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 
 /*
 Origin class of all the callAPI.
             callAPI
-         |             |
-       callAPIGet   callAPIPOST
-         |             |
-     other get API  other post API
+         |             |                |
+       callAPIGet   callAPIPOST      callAPIPUT
+         |             |                |
+     other get API  other post API   other post API
 
-Then : even : name of the value, odd : value
- */
+Then : even : name of the value, odd : value */
+
+public abstract class CallAPI extends AsyncTask<String, String, String> {
+
+    private Context context;
+    private String adressUrl;
+    private String requestMethode;
+    private boolean doOutput = false;
+
+    public CallAPI(Context context){
+        this.context=context.getApplicationContext();
+    }
+
+
+    public Context getContext(){
+        return context;
+    }
+
+    protected void setRequest(String adressUrl, String methode){
+        this.adressUrl = adressUrl;
+        this.requestMethode = methode;
+    }
+
+    protected void setRequest(String adressUrl, String methode, Boolean doOutput){
+        setRequest(adressUrl, methode);
+
+        this.doOutput = doOutput;
+    }
+
+
+    @Override
+    protected String doInBackground(String... params) {
+
+        String response ="";
+
+        try {
+            URL url = new URL(adressUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod(requestMethode);
+            conn.setDoOutput(doOutput);
+
+            Log.i("callApi", "avant boucle");
+            StringBuilder postData = new StringBuilder();
+            for (int i = 0; i< params.length; i=i+2) {
+                if (postData.length() != 0) postData.append('&');
+                postData.append(URLEncoder.encode(params[i], "UTF-8"));
+                postData.append('=');
+                postData.append(URLEncoder.encode(params[i+1], "UTF-8"));
+            }
+            byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+
+            Log.i("callApi", "on ecrit");
+            conn.getOutputStream().write(postDataBytes);
+
+            System.out.println("connection sended");
+
+            // read the response
+            System.out.println("Response Code: " + conn.getResponseCode());
+            InputStream in = new BufferedInputStream(conn.getInputStream());
+            /*
+            response = in.toString();
+            System.out.println(response);
+            return response;*/
+
+            StringBuilder sb = new StringBuilder();
+            for (int c; (c = in.read()) >= 0;)
+                sb.append((char)c);
+             response = sb.toString();
+            Log.i("resposne", response);
+
+            return response;
+        }
+        catch(MalformedURLException e){
+            Log.i("malformedURL", adressUrl);
+        }
+        catch(IOException e){
+            Log.i("IOException", e.getMessage());
+        }
+
+        return response;
+
+    }
+
+    protected void onPostExecute(String result) {
+
+    }
+
+} // end CallAPI
+
+/*
+
+
 public abstract class CallAPI extends AsyncTask<String, String, String> {
 
     private Context context;
@@ -39,10 +123,10 @@ public abstract class CallAPI extends AsyncTask<String, String, String> {
         this.request = request;
     }
 
-    /*
+
 Those functions are call by the inferior classes to define and get the HttpBase request.
 request is a HttpGet for the APIGet subclass. A HttpPost for the APIPost subclass
- */
+
     protected  HttpRequestBase getRequest(){
         return request;
     }
@@ -124,5 +208,5 @@ request is a HttpGet for the APIGet subclass. A HttpPost for the APIPost subclas
 
     }
 
-} // end CallAPI
+} // end CallAPI */
 

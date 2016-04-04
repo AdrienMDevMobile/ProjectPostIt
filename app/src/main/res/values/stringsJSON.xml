@@ -6,5 +6,6 @@
     <string name="json_user_id">id</string>
     <string name="json_answer_error">error</string>
     <string name="json_answer_error_message">message</string>
+    <string name="json_response_servor">res</string>
 
 </resources>

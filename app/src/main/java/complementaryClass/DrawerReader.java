@@ -32,8 +32,8 @@ public abstract class DrawerReader {
             String name = ((Nameable) drawerItem).getName().getText(context);
             Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
 
-            //If the user clicked on a link toward a board.
-            if (position < jsonArray.length()) {
+            //If the user clicked on a link toward a board. If we don't check that jsonArray is not null, the application crash if we are offline
+            if ( jsonArray != null && position < jsonArray.length()) {
                 Log.i("positionClick", Integer.toString(position));
                 try {
                     return onBoardNameClick(context, jsonArray.getJSONObject(position), toolbar, activeBoardInfo);
@@ -45,10 +45,10 @@ public abstract class DrawerReader {
                 }
             }
 
-            if(name == context.getString(R.string.add_board)){
+            if(name.equals(context.getString(R.string.add_board))){
                 return onAddBoardClick(context, fragmentManager);
             }
-            if (name == context.getString(R.string.logout)){
+            if (name.equals(context.getString(R.string.logout))){
                 return logOutClick(context);
             }
         }

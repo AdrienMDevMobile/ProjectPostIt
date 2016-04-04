@@ -3,11 +3,11 @@
     <!-- Activity names -->
     <string name="app_name">ProjectPostIt</string>
 
-    <string name="title_activity_sign_up">SignUpActivity</string>
-    <string name="title_activity_logged_in">LoggedInActivity</string>
-    <string name="title_activity_loading">LoadingActivity</string>
+    <string name="title_activity_sign_up">Sign up</string>
+    <string name="title_activity_loading">Loading</string>
     <string name="title_activity_test_drawer_builder">testDrawerBuilder</string>
-    <string name="title_activity_creating_board">CreatingBoardActivity</string>
+   <!-- <string name="title_activity_creating_board">CreatingBoardActivity</string> -->
+    <string name="title_activity_login">Log in</string>
 
     <!-- Bug toasts -->
     <string name="exception_main_activity">There was an error in the loading.</string>

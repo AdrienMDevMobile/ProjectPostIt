@@ -30,13 +30,15 @@ public class CallAPILogin extends CallAPIPOST {
         try {
             JSONObject json = new JSONObject(result);
 
-            if(! json.isNull("error")){
+            if(! json.isNull(getContext().getString(R.string.json_answer_error)) || ! json.getBoolean(getContext().getString(R.string.json_response_servor))){
                 //If fails (returns an error)
-                result = json.getJSONObject("error").getString("message");
+                result = json.getString("error");
             }
             else {
-                String sessionKey = json.getString("id");
                 String userId = json.getString("userId");
+                Log.i("uId", userId);
+                String sessionKey = json.getString("key");
+
                 Log.i("LoginAPI", "we set into the shared preferences");
                 Log.i("sessionKey", sessionKey);
                 Log.i("userId", userId);
@@ -47,8 +49,6 @@ public class CallAPILogin extends CallAPIPOST {
                 editor.putString(getContext().getString(R.string.sharedPreferences_values_user_id), userId);
                 editor.commit();
 
-               /* Context t = getContext().getApplicationContext();
-                getContext().startActivity(new Intent(getContext(), LoadingActivity.class)); */
                 Intent intent = new Intent(getContext(), LoadingActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -65,6 +65,5 @@ public class CallAPILogin extends CallAPIPOST {
         Log.i("l", result);
         Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
     }
-
 
 }
