@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.michel.adrien.projectpostit.R;
 
-import callAPI.CallAPIAddUserToBoard;
+import callAPI.CallAPIAddUserToBoardA;
 import complementaryClass.ActiveBoardInfo;
 
 /*
@@ -45,7 +45,7 @@ public class SettingBoardFragment extends DialogFragment{
             public void onClick(View v) {
                 EditText ETUserName = (EditText)view.findViewById(R.id.setting_board_etAddUser);
                 String  username = ETUserName.getText().toString();
-                new CallAPIAddUserToBoard(getView().getContext(), getArguments().getString(argumentActiveBoardId), username).execute();
+                new CallAPIAddUserToBoardA(getView().getContext(), getArguments().getString(argumentActiveBoardId), username).execute();
                 ETUserName.setText("");
             }
         });
