@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import callAPI.CallAPIBoardList;
-import complementaryClass.LoggedInCheck;
 import exception.NotLoggedInException;
 
 /*
@@ -21,7 +20,7 @@ public class LoadingActivity extends AppCompatActivity {
 
         Log.i("Activity", "LoadingActivity");
         try {
-            new CallAPIBoardList(getBaseContext(), null, LoggedInCheck.getLogInToken(getBaseContext())).execute();
+            new CallAPIBoardList(getBaseContext()).execute();
         }
         catch (NotLoggedInException e){
             e.askForLogin(getBaseContext());

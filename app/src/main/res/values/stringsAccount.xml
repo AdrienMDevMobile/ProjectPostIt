@@ -28,5 +28,6 @@
     <string name="notif_add_user_to_board_fail_title">User not added</string>
     <string name="notif_add_user_to_board_fail_text">We were not able to add the user to the board</string>
     <string name="notif_user_not_found">The username does not match</string>
+    <string name="board_successfully_added">Board successfully created</string>
 
 </resources>

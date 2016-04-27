@@ -19,11 +19,24 @@ import settings.ApiUrl;
  */
 public class CallAPIAddBoard extends CallAPIPOST {
 
-    public CallAPIAddBoard(Context context, String userId, String IdToken) throws NotLoggedInException {
-        super(context, ApiUrl.getUserBoardsRoute(context, userId, IdToken));
+    public CallAPIAddBoard(Context context){
+        super(context, ApiUrl.getCreateBoardsRoute());
     }
 
-    public void onPostExecute(String result){
+    @Override
+    protected String doInBackground(String... params) {
+        //Add the Id of the user, and the token at the end of the params table
+        try {
+            return super.doInBackground(addUserIdandToken(params));
+        }
+        catch (NotLoggedInException n){
+            this.cancel(true);
+            return "";
+        }
+
+    }
+
+    public void onPostfExecute(String result){
         Intent intent = null;
         //Si ca marche : faire un intent ver Loading activity.
         try {
@@ -32,9 +45,7 @@ public class CallAPIAddBoard extends CallAPIPOST {
                 result = json.getJSONObject("error").getString("message");
             }
             else {
-                String successful = getContext().getResources().getString(R.string.signUp_successful);
-
-                //Donner valeur a result
+                result = getContext().getResources().getString(R.string.board_successfully_added);
 
                 intent = new Intent(getContext(), LoadingActivity.class);
             }

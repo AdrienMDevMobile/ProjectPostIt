@@ -13,8 +13,6 @@ import android.widget.EditText;
 import com.michel.adrien.projectpostit.R;
 
 import callAPI.CallAPIAddBoard;
-import complementaryClass.LoggedInCheck;
-import exception.NotLoggedInException;
 
 /*
     Fragment that appears in main activity when the user clicks on addBoard button.
@@ -40,13 +38,8 @@ public class CreateBoardFragment extends DialogFragment {
                                         findViewById(R.id.create_board_activity_cbIsPublic))
                                             .isChecked();
 
-                                try {
-                                    new CallAPIAddBoard(getContext(), null, LoggedInCheck.getLogInToken(getContext())).execute("name", boardName,
+                                    new CallAPIAddBoard(getContext()).execute("boardName", boardName,
                                             "is_public", isPublic.toString());
-                                }
-                                catch(NotLoggedInException e){
-                                    e.askForLogin(getContext());
-                                }
                             }
                         }
                 );

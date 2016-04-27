@@ -14,7 +14,7 @@ import java.net.URLEncoder;
 
 /*
 Origin class of all the callAPI.
-            callAPI
+                    callAPI
          |             |                |
        callAPIGet   callAPIPOST      callAPIPUT
          |             |                |
@@ -96,7 +96,10 @@ public abstract class CallAPI extends AsyncTask<String, String, String> {
             Log.i("malformedURL", adressUrl);
         }
         catch(IOException e){
-            Log.i("IOException", e.getMessage());
+            Log.i("IOException", e.getMessage()); //Sometime this can fail
+        }
+        catch (Exception e){
+            Log.i("Exception", e.getMessage());
         }
 
         return response;
