@@ -36,7 +36,8 @@ public class CallAPIAddBoard extends CallAPIPOST {
 
     }
 
-    public void onPostfExecute(String result){
+    @Override
+    public void onPostExecute(String result){
         Intent intent = null;
         //Si ca marche : faire un intent ver Loading activity.
         try {
