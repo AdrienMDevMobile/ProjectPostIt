@@ -63,7 +63,7 @@ public class CallAPILogin extends CallAPIPOST {
         CharSequence text = result;
 
         Log.i("l", result);
-        Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
     }
 
 

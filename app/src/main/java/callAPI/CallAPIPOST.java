@@ -44,14 +44,18 @@ public abstract class CallAPIPOST extends CallAPI {
         //At the end of the loop, i = params.size
         if(addId){
             String userId = LoggedInCheck.getLogInUserId(getContext());
-            params2[i] = "userId";
-            params2[i + 1] = userId;
+            params2[i++] = "userId";
+            params2[i++] = userId;
+            Log.i("addIDTOken", "id");
         }
 
         if(addToken) {
             String token = LoggedInCheck.getLogInToken(getContext());
-            params2[i + 2] = "token";
-            params2[i + 3] = token;
+            System.out.print("i" + i);
+            params2[i++] = "token";
+            System.out.print("i + 1" + i);
+            params2[i] = token;
+            Log.i("addIDTOken", "token");
         }
 
         return params2;

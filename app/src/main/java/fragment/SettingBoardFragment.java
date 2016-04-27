@@ -45,7 +45,7 @@ public class SettingBoardFragment extends DialogFragment{
             public void onClick(View v) {
                 EditText ETUserName = (EditText)view.findViewById(R.id.setting_board_etAddUser);
                 String  username = ETUserName.getText().toString();
-                new CallAPIAddUserToBoard(getView().getContext(), getArguments().getString(argumentActiveBoardId), username).execute();
+                new CallAPIAddUserToBoard(getView().getContext()).execute("username", username, "boardId", getArguments().getString(argumentActiveBoardId));
                 ETUserName.setText("");
             }
         });
