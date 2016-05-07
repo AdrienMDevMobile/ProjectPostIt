@@ -26,4 +26,11 @@
     <string name="go_to_sign_up">Create an account</string>
 
     <string name="contentDescription_logo">Logo post it</string>
+
+    <string name="tab_add_text_id">text</string>
+    <string name="tab_add_picture_id">picture</string>
+    <string name="tab_add_text_name">Post it</string>
+    <string name="tab_add_picture_name">Picture</string>
+    <string name="add_post_it_confirm">Add post it</string>
+
 </resources>

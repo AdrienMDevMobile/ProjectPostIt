@@ -36,10 +36,10 @@ public class CreateBoardFragment extends DialogFragment {
                                         .getText().toString();
                                 Boolean isPublic = ((CheckBox)dialog2.
                                         findViewById(R.id.create_board_activity_cbIsPublic))
-                                            .isChecked();
+                                        .isChecked();
 
-                                    new CallAPIAddBoard(getContext()).execute("boardName", boardName,
-                                            "is_public", isPublic.toString());
+                                new CallAPIAddBoard(getContext()).execute("boardName", boardName,
+                                        "is_public", isPublic.toString());
                             }
                         }
                 );

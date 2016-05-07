@@ -27,6 +27,9 @@ public abstract class ApiUrl {
     public static String getBoardListRoute(){ return getBoardsRoute() + "getList/"; }
     public static String getAddUserToBoardRoute() { return getBoardsRoute() + "addUser/";}
 
+    public static String getPostItRoute() {  return getDatabaseUrl() + "PostIts/";  }
+    public static String getAddPostItRoute() { return getPostItRoute() + "addPostIt/"; }
+
 
     public static String getSelectedUseRoute(Context context, String userId) throws NotLoggedInException {
         /*IF no user is given, we take the user that is currently connected */

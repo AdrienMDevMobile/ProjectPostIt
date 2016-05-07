@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.Drawer;
@@ -20,7 +22,9 @@ import org.json.JSONArray;
 import callAPI.CallAPIBoardList;
 import complementaryClass.ActiveBoardInfo;
 import complementaryClass.DrawerReader;
+import fragment.AddPostItFragment;
 import fragment.SettingBoardFragment;
+import settings.handParameters;
 
 /*
     Main activity.
@@ -47,9 +51,49 @@ public class MainActivity extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(! activeBoardInfo.getActiveBoardId().equals("")) {
+                if (!activeBoardInfo.getActiveBoardId().equals("")) {
                     SettingBoardFragment settingBoardFragment = SettingBoardFragment.newInstance(activeBoardInfo);
                     settingBoardFragment.show(getSupportFragmentManager(), "");
+                } else {
+                    Toast.makeText(getBaseContext(), R.string.please_select_board, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        final Button addPI = (Button) findViewById(R.id.main_activity_btnAddPI);
+        addPI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(! activeBoardInfo.getActiveBoardId().equals("")) {
+                    //Creating the instance of PopupMenu
+                    PopupMenu popup = new PopupMenu(MainActivity.this, addPI);
+                    //Inflating the Popup using xml file
+                    popup.getMenuInflater()
+                            .inflate(R.menu.menu_add_post_it, popup.getMenu());
+
+                    //registering popup with OnMenuItemClickListener
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        public boolean onMenuItemClick(MenuItem item) {
+                            switch(item.getItemId()){
+                                case R.id.add_pi_text :
+                                    AddPostItFragment addPostItFragment = AddPostItFragment.newInstance(activeBoardInfo, handParameters.ARG_PI_TYPE_TEXT);
+                                    addPostItFragment.show(getSupportFragmentManager(), "");
+                                    break;
+                                case R.id.add_pi_picture :
+                                    Toast.makeText(
+                                            MainActivity.this,
+                                            "Not available yet :/",
+                                            Toast.LENGTH_SHORT
+                                    ).show();
+                                    break;
+                            }
+                            return true;
+                        }
+                    });
+
+                    popup.show(); //showing popup menu
+                    //AddPostItFragment addPostItFragment = AddPostItFragment.newInstance(activeBoardInfo);
+                    //addPostItFragment.show(getSupportFragmentManager(), "");
                 }
                 else{
                     Toast.makeText(getBaseContext(), R.string.please_select_board, Toast.LENGTH_LONG).show();
