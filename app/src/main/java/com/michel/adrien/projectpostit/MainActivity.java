@@ -1,7 +1,5 @@
 package com.michel.adrien.projectpostit;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +7,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -43,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         /*
             Load the settings button
          */
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         addPI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(! activeBoardInfo.getActiveBoardId().equals("")) {
+                if (!activeBoardInfo.getActiveBoardId().equals("")) {
                     //Creating the instance of PopupMenu
                     PopupMenu popup = new PopupMenu(MainActivity.this, addPI);
                     //Inflating the Popup using xml file
@@ -74,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
                     //registering popup with OnMenuItemClickListener
                     popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         public boolean onMenuItemClick(MenuItem item) {
-                            switch(item.getItemId()){
-                                case R.id.add_pi_text :
+                            switch (item.getItemId()) {
+                                case R.id.add_pi_text:
                                     AddPostItFragment addPostItFragment = AddPostItFragment.newInstance(activeBoardInfo, handParameters.ARG_PI_TYPE_TEXT);
                                     addPostItFragment.show(getSupportFragmentManager(), "");
                                     break;
-                                case R.id.add_pi_picture :
+                                case R.id.add_pi_picture:
                                     Toast.makeText(
                                             MainActivity.this,
                                             "Not available yet :/",
@@ -94,8 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     popup.show(); //showing popup menu
                     //AddPostItFragment addPostItFragment = AddPostItFragment.newInstance(activeBoardInfo);
                     //addPostItFragment.show(getSupportFragmentManager(), "");
-                }
-                else{
+                } else {
                     Toast.makeText(getBaseContext(), R.string.please_select_board, Toast.LENGTH_LONG).show();
                 }
             }
@@ -105,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*
             LOGOUT
-         */
+
         Button logout = (Button) findViewById(R.id.main_activity_btnLogOut);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
-        });
+        }); */
 
 
         // Handle Toolbar
@@ -160,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         //The class delegate the click handle to the DrawerReader class.
                         return DrawerReader.onDrawerClick(getBaseContext(), view, position,
-                                getSupportFragmentManager(), drawerItem, jsonReader, toolbar, activeBoardInfo);
+                                getSupportFragmentManager(), drawerItem, jsonReader, toolbar, activeBoardInfo, (LinearLayout)findViewById(R.id.linear_layout_putPostIt));
                     }
                 }).build();
 

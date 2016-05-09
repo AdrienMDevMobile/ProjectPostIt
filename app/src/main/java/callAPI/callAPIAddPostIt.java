@@ -37,6 +37,7 @@ public class callAPIAddPostIt extends CallAPIPOST{
             JSONObject json = new JSONObject(result);
             if (!json.isNull("error")) {
                 result = json.getJSONObject("error").getString("message");
+                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
             }
             else {
                 /*TODO

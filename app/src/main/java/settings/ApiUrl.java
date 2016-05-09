@@ -1,10 +1,5 @@
 package settings;
 
-import android.content.Context;
-
-import complementaryClass.LoggedInCheck;
-import exception.NotLoggedInException;
-
 /**
  * Class that is used to get the differents adress of all the api.
  */
@@ -29,24 +24,6 @@ public abstract class ApiUrl {
 
     public static String getPostItRoute() {  return getDatabaseUrl() + "PostIts/";  }
     public static String getAddPostItRoute() { return getPostItRoute() + "addPostIt/"; }
+    public static String getPostItListRoute(){ return getPostItRoute() + "getPostItList/";}
 
-
-    public static String getSelectedUseRoute(Context context, String userId) throws NotLoggedInException {
-        /*IF no user is given, we take the user that is currently connected */
-        if(userId==null){
-                userId = LoggedInCheck.getLogInUserId(context);
-        }
-        return getUserRoute()  + userId + "/";
-    }
-
-    public static String getUnknownUserInformation(String username){
-        return getUserRoute()+ "findOne?filter[where][username]=" + username;
-    }
-
-    public static String addUserToExistingBoardRoute(Context context, String userId, String boardId) throws  NotLoggedInException{
-       // /Members/{id}/boards/rel/{fk}
-        return getSelectedUseRoute(context, userId) + "boards/rel/" + boardId;
-    }
-
-   // public static String getBoardRoute() { return getDatabaseUrl() + "Board/";}
 }

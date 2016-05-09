@@ -8,4 +8,14 @@
     <string name="json_answer_error_message">message</string>
     <string name="json_response_servor">res</string>
 
+    <!-- Values returned when you request the list post it of a board-->
+    <string name="json_postIt_response">result</string>
+    <string name="json_postIt_type_name">__t</string>
+    <string name="json_postIt_type_text">textPI</string>
+    <string name="json_postIt_object">postIt</string>
+    <string name="json_postIt_text_value">text</string>
+    <string name="json_postIt_author_object">author</string>
+    <string name="json_postIt_author_name">username</string>
+    <string name="json_postIt_time_value">time</string>
+
 </resources>

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.michel.adrien.projectpostit.LoginActivity;
@@ -18,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import callAPI.CallAPIGetPostItList;
 import fragment.CreateBoardFragment;
 
 /**
@@ -27,7 +29,7 @@ public abstract class DrawerReader {
 
     public static boolean onDrawerClick(Context context,  View view, int position,
                                         FragmentManager fragmentManager,  IDrawerItem drawerItem,
-                                        JSONArray jsonArray, Toolbar toolbar, ActiveBoardInfo activeBoardInfo){
+                                        JSONArray jsonArray, Toolbar toolbar, ActiveBoardInfo activeBoardInfo, LinearLayout currentLayout){
         if (drawerItem instanceof Nameable) {
             String name = ((Nameable) drawerItem).getName().getText(context);
             Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
@@ -36,7 +38,11 @@ public abstract class DrawerReader {
             if ( jsonArray != null && position < jsonArray.length()) {
                 Log.i("positionClick", Integer.toString(position));
                 try {
-                    return onBoardNameClick(context, jsonArray.getJSONObject(position), toolbar, activeBoardInfo);
+                    if(currentLayout == null){
+                        Log.w("PROBLEME MAJEUR", "PROBLEME MAJEUR");
+                    }
+                    return onBoardNameClick(context, jsonArray.getJSONObject(position), toolbar,
+                            activeBoardInfo, currentLayout);
                 }
                 catch(JSONException e){
                     Toast.makeText(context, context.getString(R.string.exception_json), Toast.LENGTH_LONG).show();
@@ -56,9 +62,15 @@ public abstract class DrawerReader {
         return false;
     }
 
-    public static boolean onBoardNameClick(Context context, JSONObject jsonObject, Toolbar toolbar, ActiveBoardInfo activeBoardInfo) throws JSONException{
+    public static boolean onBoardNameClick(Context context, JSONObject jsonObject,
+                                           Toolbar toolbar, ActiveBoardInfo activeBoardInfo, LinearLayout currentLayout) throws JSONException{
         toolbar.setTitle(jsonObject.getString(context.getString(R.string.json_boardlist_board_name)));
         activeBoardInfo.setActiveBoardId(jsonObject.getString(context.getString(R.string.json_boardlist_board_id)));
+        if(currentLayout == null){
+            Log.w("PROBLEME", "PROBLEME");
+        }
+        CallAPIGetPostItList callAPIGetPostItList = new CallAPIGetPostItList(context, currentLayout);
+        callAPIGetPostItList.execute("boardId", activeBoardInfo.getActiveBoardId());
         return false;
     }
 
